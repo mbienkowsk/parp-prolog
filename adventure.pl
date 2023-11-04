@@ -9,6 +9,7 @@
 :- consult('inventory_management.pl').
 :- consult('movement.pl').
 :- consult('exploration.pl').
+:- consult('item_state.pl').
 
 
 /* Initial setup */
