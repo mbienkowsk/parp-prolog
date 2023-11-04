@@ -1,3 +1,12 @@
+unlock(Item) :- 
+    \+ container_interface(Item),
+    write('This item cannot be unlocked.'),
+    !.
+
+unlock(Item) :- 
+    \+ can_unlock(Item),
+    write('You do not have access to unlock this item.'),
+    !.
 
 unlock(Item) :- 
     is_locked(Item), 
@@ -19,6 +28,17 @@ unlock(Item) :-
 unlock(Item) :- 
     is_closed(Item),
     write('It is already unlocked.'),
+    !.
+
+
+lock(Item) :- 
+    \+ container_interface(Item),
+    write('This item cannot be locked.'),
+    !.
+
+lock(Item) :- 
+    \+ can_lock(Item),
+    write('You do not have access to lock this item.'),
     !.
 
 lock(Item) :-     
@@ -47,6 +67,12 @@ lock(Item) :-
     write('Ok, the '), write(Item), write(' is locked.'),
     !.
 
+
+open(Item) :- 
+    \+ container_interface(Item),
+    write('This item cannot be opened.'),
+    !.
+
 open(Item) :- 
     is_locked(Item),
     write('It is locked.'),
@@ -64,11 +90,17 @@ open(Item) :-
     write('It is already open.'),
     !.
 
-open(Item) :-
-    is_closed(Item),
+open(Item) :-   
+    is_closed(Item), 
     retract(is_closed(Item)),
     assert(is_open(Item)),
     write('Ok, the '), write(Item), write(' is open.'),
+    !.
+
+
+close_door(Item) :- 
+    \+ container_interface(Item),
+    write('This item cannot be closed.'),
     !.
 
 close_door(Item) :- 
