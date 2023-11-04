@@ -1,5 +1,5 @@
-:- dynamic i_am_at/1, at/2, holding/1.
 
+:- dynamic i_am_at/1, at/2, holding/1.
 /* These rules describe how to pick up an object. */
 
 take(X) :-
@@ -33,3 +33,31 @@ drop(X) :-
 drop(_) :-
     write('You aren''t holding it!'),
     nl.
+
+
+/* These rules are responsible for printing out your inventory*/
+
+list_items([]).
+
+list_items([Item|Rest]) :-
+    tab(2), write(Item), nl,
+    list_items(Rest).
+
+
+display_inv([]) :- 
+    write('Your inventory is empty.'), nl, !.
+
+display_inv(Inventory) :- 
+    write('You have: '), nl,
+    list_items(Inventory).
+
+
+inventory :-
+    findall(X, holding(X), Inventory),
+    display_inv(Inventory).
+
+
+% Aliases
+i :- inventory.
+eq :- inventory.
+equipment :- inventory.
