@@ -10,6 +10,6 @@ describe(locker_room) :-
 describe(locker) :- is_unlocked(locker), write('The locker seems to be open.').
 describe(locker) :- is_locked(locker), write('There is a keycard inside.').
 describe(locker) :- is_open(locker), write('There is a key inside.').
-describe(locker) :- is_closed(locker), write('The locker seems to be open.').
+describe(locker) :- is_closed(locker), write('The locker seems to be unlocked.').
 
 
