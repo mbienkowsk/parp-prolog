@@ -1,7 +1,8 @@
 /* Sysy biega 2, by Mikolaj Garbowski and Maksym Bienkowski. */
 
-:- dynamic i_am_at/1, at/2, holding/1.
-:- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
+:- dynamic i_am_at/1, at/2, holding/1, is_open/1, is_closed/1, is_locked/1, is_unlocked/1.
+:- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(is_closed(_)), retractall(is_closed(_)),
+   retractall(is_open(_)), retractall(is_locked(_)), retractall(is_unlocked(_)).
 
 /* Source databases */
 :- consult('descriptions.pl').
@@ -11,11 +12,7 @@
 
 
 /* Initial setup */
-i_am_at(someplace).
-
-path(someplace, n, someplace).
-
-at(thing, someplace).
+:- consult('setup.pl').
 
 
 /* Under UNIX, the "halt." command quits Prolog but does not
