@@ -7,9 +7,22 @@ describe(locker_room) :-
    write('In the corner of the room, there is a locker.').
 
 /* These rules describe items. */
-describe(locker) :- is_unlocked(locker), write('The locker seems to be open.').
-describe(locker) :- is_locked(locker), write('There is a keycard inside.').
-describe(locker) :- is_open(locker), write('There is a key inside.').
+describe(locker) :- 
+   is_open(locker), 
+   write('The locker consists of two compartments: the hanger,
+   on which there is a lab coat, and a smaller compartment below it which is locked.').
+
 describe(locker) :- is_closed(locker), write('The locker seems to be unlocked.').
 
 
+describe(coat) :- 
+   in(coat, key),
+   write('The lab coat is white and has a name tag on it. '),
+   write('The name tag reads "Dr. J. Sysy". In the front pocket you find a key.'),
+   assert(holding(locker_room_key)),
+   !.
+
+describe(coat) :- 
+   write('The lab coat is white and has a name tag on it. '),
+   write('The name tag reads "Dr. J. Sysy".'),
+   assert(holding(locker_room_key)).
