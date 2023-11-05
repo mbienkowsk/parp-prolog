@@ -18,7 +18,7 @@ take(X) :-
 
 % Case 3 - object cannot be taken out of a container
 take(X) :-
-    \+ remove_from_container(X),
+    \+ can_remove_from_container(X),
     !.
 
 % Case 4 - All previous conditions don't apply, can be taken
