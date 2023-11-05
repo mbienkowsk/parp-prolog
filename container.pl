@@ -124,3 +124,28 @@ close_door(Item) :-
     is_closed(Item),
     write('It is already closed.'),
     !.
+
+
+remove_from_container(Thing) :-
+    (in(Thing, X), container_interface(X)),
+    is_open(X),
+    !.
+
+remove_from_container(Thing) :-
+    (in(Thing, X), container_interface(X)),
+    (is_closed(X); is_unlocked(X)),
+    !,
+    write('You must open the '), write(X), write(' first.'),
+    fail.
+
+remove_from_container(Thing) :-
+    (in(Thing, X), container_interface(X)),
+    is_locked(X),
+    !,
+    write('You must unlock the '), write(X), write(' first.'),
+    fail.
+
+remove_from_container(Thing) :-
+    in(Thing, X), in(X, _), !, remove_from_container(X).
+
+remove_from_container(_).

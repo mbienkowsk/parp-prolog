@@ -2,22 +2,31 @@
 :- dynamic i_am_at/1, at/2, holding/1.
 /* These rules describe how to pick up an object. */
 
+% Case 1 - already holding the object
 take(X) :-
     holding(X),
     write('You''re already holding it!'),
     !, nl.
 
+% Case 2 - object and player in different rooms
 take(X) :-
-    i_am_at(Place),
-    at(X, Place),
-    retract(at(X, Place)),
-    assert(holding(X)),
-    write('OK.'),
-    !, nl.
-
-take(_) :-
+    \+((i_am_at(Place),
+    at(X, Place))),
     write('I don''t see it here.'),
-    nl.
+    nl,
+    !.    
+
+% Case 3 - object cannot be taken out of a container
+take(X) :-
+    \+ remove_from_container(X),
+    !.
+
+% Case 4 - All previous conditions don't apply, can be taken
+take(X) :-
+    retract(in(X, _)),
+    assert(holding(X)),
+    write('OK.'), nl.
+
 
 
 /* These rules describe how to put down an object. */
