@@ -26,3 +26,5 @@ describe(coat) :-
    write('The lab coat is white and has a name tag on it. '),
    write('The name tag reads "Dr. J. Sysy".'),
    assert(holding(locker_room_key)).
+
+describe(locker_room_key) :- write('Small, silver key. What does it open?').
