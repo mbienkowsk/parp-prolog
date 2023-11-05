@@ -1,6 +1,6 @@
 /* Sysy biega 2, by Mikolaj Garbowski and Maksym Bienkowski. */
 
-:- dynamic i_am_at/1, at/2, holding/1, is_open/1, is_closed/1, is_locked/1, is_unlocked/1.
+:- dynamic i_am_at/1, at/2, holding/1, is_open/1, is_closed/1, is_locked/1, is_unlocked/1, in/2.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(is_closed(_)), retractall(is_closed(_)),
    retractall(is_open(_)), retractall(is_locked(_)), retractall(is_unlocked(_)).
 
@@ -9,7 +9,8 @@
 :- consult('inventory_management.pl').
 :- consult('movement.pl').
 :- consult('exploration.pl').
-:- consult('item_state.pl').
+:- consult('container.pl').
+:- consult('rooms/locker_room.pl').
 
 
 /* Initial setup */
