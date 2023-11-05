@@ -16,15 +16,14 @@ describe(locker) :- is_closed(locker), write('The locker seems to be unlocked.')
 
 
 describe(coat) :- 
-   in(coat, key),
+   in(locker_room_key, coat),
    write('The lab coat is white and has a name tag on it. '),
    write('The name tag reads "Dr. J. Sysy". In the front pocket you find a key.'),
    assert(holding(locker_room_key)),
    !.
 
-describe(coat) :- 
+describe(coat) :-
    write('The lab coat is white and has a name tag on it. '),
-   write('The name tag reads "Dr. J. Sysy".'),
-   assert(holding(locker_room_key)).
+   write('The name tag reads "Dr. J. Sysy".').
 
 describe(locker_room_key) :- write('Small, silver key. What does it open?').
