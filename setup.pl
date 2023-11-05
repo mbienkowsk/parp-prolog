@@ -6,6 +6,7 @@ to test what you've implemented. */
 i_am_at(locker_room).
 
 
-% Aliases for halt
+% Aliases for halt and clear
 quit :- halt.
 exit :- halt.
+clear :- tty_clear.
