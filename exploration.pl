@@ -1,6 +1,7 @@
 
-/* This rule tells how to look around you. */
+:- dynamic at/2.
 
+/* This rule tells how to look around you. */
 look :-
     i_am_at(Place),
     describe(Place),
@@ -9,16 +10,26 @@ look :-
     nl.
 
 /* Rules responsible for examining items */
-examine(Thing) :- describe(Thing).
+examine(Thing) :- 
+    ((at(Thing, Place), i_am_at(Place)); 
+        holding(Thing)),
+    describe(Thing),
+    !.
+
+examine(_) :- 
+    write('I don\'t see that here.'),
+    !.
+
+% Aliases
 inspect(Thing) :- examine(Thing).
+e(Thing) :- examine(Thing).
 
 
-/* These rules set up a loop to mention all the objects
-in your vicinity. */
+/* In (Thing, Place) represents no container being between Thing and Place.
+At also checks recursively for containers in Place that contain Thing. */
+at(Thing, Place) :-
+    in(Thing, Place),
+    !.
 
-% notice_objects_at(Place) :-
-%     at(X, Place),
-%     write('There is a '), write(X), write(' here.'), nl,
-%     fail.
-
-% notice_objects_at(_).
+at(Thing, Place) :-
+    in(Thing, ThingContainer), at(ThingContainer, Place).
