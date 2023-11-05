@@ -11,7 +11,7 @@ look :-
 
 /* Rules responsible for examining items */
 examine(Thing) :- 
-    ((at(Thing, Place), i_am_at(Place)); 
+    ((i_am_at(Place), at(Thing, Place)); 
         holding(Thing)),
     describe(Thing),
     !.
