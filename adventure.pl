@@ -1,20 +1,23 @@
 /* Sysy biega 2, by Mikolaj Garbowski and Maksym Bienkowski. */
 
 :- dynamic i_am_at/1, at/2, holding/1, is_open/1, is_closed/1, is_locked/1, is_unlocked/1, in/2.
-:- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(is_closed(_)), retractall(is_closed(_)),
+reset_world :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(is_closed(_)), retractall(is_closed(_)),
    retractall(is_open(_)), retractall(is_locked(_)), retractall(is_unlocked(_)).
 
 /* Source databases */
-:- consult('descriptions.pl').
-:- consult('inventory_management.pl').
-:- consult('movement.pl').
-:- consult('exploration.pl').
-:- consult('container.pl').
-:- consult('rooms/locker_room.pl').
+import_data:-
+        consult('descriptions.pl'),
+        consult('inventory_management.pl'),
+        consult('movement.pl'),
+        consult('exploration.pl'),
+        consult('container.pl'),
+        consult('door_like_interface.pl'),
+        consult('rooms/locker_room.pl').
 
 
 /* Initial setup */
-:- consult('setup.pl').
+setup :- 
+        consult('setup.pl').
 
 
 /* Under UNIX, the "halt." command quits Prolog but does not
@@ -46,6 +49,13 @@ instructions :-
 
 /* This rule prints out instructions and tells where you are. */
 
+reset_world.
+import_data.
+setup.
+
 start :-
+        reset_world,
+        import_data,
+        setup,
         instructions,
         look.
