@@ -27,3 +27,15 @@ describe(coat) :-
    write('The name tag reads "Dr. J. Sysy".').
 
 describe(locker_room_key) :- write('Small, silver key. What does it open?').
+
+
+describe(north_door) :- 
+   i_am_at(locker_room),
+   is_closed(north_door),
+   write('The door is made of solid, red metal. Label says "Security room".'),
+   write('The door is closed. there is a keypad next to it. It requires a 6 digit code to be entered.').
+
+describe(keypad) :-
+   write('A modern keypad, mounted beside the security room door, stands as the gateway to the lab. '),
+   write('It features a digital touchscreen with a numeric grid and softly backlit keys. '),
+   write('To enter, you must input the correct 6-digit code.').
