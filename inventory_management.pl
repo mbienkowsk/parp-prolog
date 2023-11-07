@@ -16,12 +16,20 @@ take(X) :-
     nl,
     !.    
 
-% Case 3 - object cannot be taken out of a container
+% Case 3 - object is not pickupable (locker, computer, etc.)
+take(X) :-
+    \+can_pick_up(X),
+    write('You can\'not pick it up.'),
+    nl,
+    !.
+
+
+% Case 4 - object cannot be taken out of a container
 take(X) :-
     \+ can_remove_from_container(X),
     !.
 
-% Case 4 - All previous conditions don't apply, can be taken
+% Case 5 - All previous conditions don't apply, can be taken
 take(X) :-
     retract(in(X, _)),
     assert(holding(X)),
