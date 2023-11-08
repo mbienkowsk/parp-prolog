@@ -1,12 +1,10 @@
-/* These rules describe the various rooms.  Depending on
-   circumstances, a room may have more than one description. */
-
+/* Description for the locker room */
 describe(locker_room) :-
    write('You are in the locker room. '),
    write('There is one door to the north and one to the east. '),
    write('In the corner of the room, there is a locker.').
 
-/* These rules describe items. */
+/* Description for the items in the locker room. */
 describe(locker) :- 
    is_open(locker), 
    write('The locker consists of two compartments: the hanger,
@@ -28,14 +26,27 @@ describe(coat) :-
 
 describe(locker_room_key) :- write('Small, silver key. What does it open?').
 
+describe(east_door) :-
+   i_am_at(locker_room),
+   holding(locker_room_key),
+   !,
+   write('The door is locked. Perhaps the key you found will work? ').
+
+describe(east_door) :-
+   i_am_at(locker_room),
+   \+holding(locker_room_key),
+   !,
+   write('The door is locked. Maybe you need to find a key? ').
+
 
 describe(north_door) :- 
    i_am_at(locker_room),
-   is_closed(north_door),
-   write('The door is made of solid, red metal. Label says "Security room".'),
-   write('The door is closed. there is a keypad next to it. It requires a 6 digit code to be entered.').
+   is_locked(north_door),
+   write('The door is made of solid, red metal. Label says "Security room" .'),
+   write('The door is closed. there is a keypad next to it. It requires a 6 digit code to be entered. ').
 
 describe(keypad) :-
    write('A modern keypad, mounted beside the security room door, stands as the gateway to the lab. '),
    write('It features a digital touchscreen with a numeric grid and softly backlit keys. '),
    write('To enter, you must input the correct 6-digit code.').
+

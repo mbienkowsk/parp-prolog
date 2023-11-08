@@ -18,6 +18,7 @@ door(locker_room, e, corridor_1).
 door_interface(east_door).
 east_door :- door(locker_room, e, corridor_1).
 is_locked(east_door).
+in(east_door, locker_room).
 can_unlock(east_door) :- holding(locker_room_key).
 can_lock(east_door) :- holding(locker_room_key).
 
