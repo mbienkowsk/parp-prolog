@@ -8,13 +8,13 @@ reset_world :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)
 
 /* Source databases */
 import_data:-
-        consult('descriptions.pl'),
         consult('inventory_management.pl'),
         consult('movement.pl'),
         consult('exploration.pl'),
         consult('container.pl'),
         consult('door_like_interface.pl'),
-        consult('rooms/locker_room.pl').
+        consult('rooms/locker_room/logic.pl'),
+        consult('rooms/locker_room/descriptions.pl').
 
 
 /* Initial setup */
