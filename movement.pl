@@ -51,4 +51,4 @@ go(_) :-
     !.
 
 % shorthand for checking whether one can go to a place
-path(Here, Direction, There) :- is_unlocked(door(Here, Direction, There)).
+path(Here, Direction, There) :- is_open(door(Here, Direction, There)).
