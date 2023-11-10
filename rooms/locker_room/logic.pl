@@ -15,8 +15,8 @@ can_pick_up(key).
 
 /* East door towards corridor 1*/
 door(locker_room, e, corridor_1).
-door_interface(east_door).
 east_door :- door(locker_room, e, corridor_1).
+door_interface(east_door).
 is_locked(east_door).
 in(east_door, locker_room).
 can_unlock(east_door) :- holding(locker_room_key).
