@@ -31,7 +31,7 @@ enter(keypad, 123456) :-
     write('The light on the lock blinks green, it buzzes and unlocks. Correct!'),
     !,
     % todo - have to retract current state
-    door(locker_room, n, security_room).
+    is_open(door(locker_room, n, security_room)).
 
 enter(keypad, _) :-
     write('The light on the lock blinks red. The code provided was incorrect.'),
