@@ -29,6 +29,8 @@ process_input("ls -a") :- write('.pass'), nl.
 
 process_input("cat .pass") :- write('Permission denied').
 
+process_input("sudo cat .pass") :- write('sysy de la knyszy').
+
 process_input(Input) :-
     sub_string(Input, 0, 3, _, "cd "),
     !,
@@ -42,6 +44,7 @@ process_input("exit") :-
     assertz(computer_state(off)),
     retract(computer_state(on)).
 
+process_input("shutdown") :- process_input("exit").
 process_input("").
 
 process_input(X) :- write("Unknown command: "), write(X), nl.
