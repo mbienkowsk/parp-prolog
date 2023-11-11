@@ -25,4 +25,3 @@ can_remove_from_container(Thing) :-
     in(Thing, X), in(X, _), !, can_remove_from_container(X).
 
 can_remove_from_container(_).
-
