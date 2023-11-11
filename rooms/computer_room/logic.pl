@@ -15,6 +15,7 @@ in(desk, computer_room).
 in(computer, computer_room).
 computer_state(off).
 
+/* Input loop when pc is turned on */
 handle_input :-
     computer_state(on),
     write('/home/sysy$ '),
@@ -24,6 +25,7 @@ handle_input :-
 
 handle_input.
 
+/* Various commands and the result of entering them */
 process_input("ls") :- nl.
 
 process_input("ls -la") :-
@@ -33,18 +35,21 @@ process_input("ls -a") :- write('.pass'), nl.
 
 process_input("cat .pass") :- write('Permission denied'), nl.
 
+/* If it starts with "cd ", display that it cannot cd to this location*/
 process_input(Input) :-
     sub_string(Input, 0, 3, _, "cd "),
     !,
     sub_string(Input, 3, _, 0, Rest),
     write('Cannot cd to '), write(Rest), nl.
 
+/* If it starts with sudo, ask for password */ 
 process_input(Input) :-
     sub_string(Input, 0, 5, _, "sudo "),
     !,
     sub_string(Input, 5, _, 0, Rest),
     password_loop(Rest).
 
+% self explanatory ones
 process_input("clear") :- tty_clear.
 
 process_input("exit") :-
@@ -58,13 +63,21 @@ process_input("").
 process_input(X) :- write("Unknown command: "), write(X), nl.
 
 password_loop(Input) :-
+    % prompt
     write('[sudo] password for sysy: '),
+    % get input
     read_line_to_string(user_input, Pass),
-    (Pass == "98145" -> !, (Input=="cat .pass" -> display_pass;  process_input(Input), handle_input);
+    /* If the correct password was entered, either display password or perform command if
+    user wasn't asking for it. Shutdown and exit make it possible to exit the loop since we don't
+    have access to ctrl+C.
+    */
+    (Pass == "98145" -> !, (Input=="cat .pass" -> display_pass;
+                              process_input(Input), handle_input);
      Pass == "shutdown" -> !, process_input("shutdown");
      Pass == "exit" -> !, process_input("exit");
      write('Invalid password.'), nl, password_loop(Input)).
 
+% placeholder for now
 display_pass :- write('knyszy de la sysy'), nl.
 
 power_on(computer) :-
