@@ -10,9 +10,14 @@ look :-
     nl.
 
 /* Rules responsible for examining items */
-examine(Thing) :- 
-    ((i_am_at(Place), at(Thing, Place)); 
-        holding(Thing)),
+examine(Thing) :-
+    i_am_at(Place),
+     (at(Thing, Place);
+     holding(Thing);
+     Thing = east_door, door(Place, e, _);
+     Thing = north_door, door(Place, n, _);
+     Thing = south_door, door(Place, s, _);
+     Thing = west_door, door(Place, w, _)),
     describe(Thing),
     !.
 
