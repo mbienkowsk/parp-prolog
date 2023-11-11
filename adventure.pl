@@ -14,7 +14,9 @@ import_data:-
         consult('container.pl'),
         consult('door_like_interface.pl'),
         consult('rooms/locker_room/logic.pl'),
-        consult('rooms/locker_room/descriptions.pl').
+        consult('rooms/locker_room/descriptions.pl'),
+        consult('rooms/computer_room/descriptions.pl'),
+        consult('rooms/computer_room/logic.pl').
         % consult('door_aliases.pl'). somehow this messes everything up
 
 
