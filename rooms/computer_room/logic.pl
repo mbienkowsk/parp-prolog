@@ -1,0 +1,63 @@
+:- discontiguous in/2, door/3, is_locked/1.
+:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1, computer_state/1.
+
+/* West door towards corridor_2 */
+door(computer_room, w, corridor_2).
+is_locked(door(computer_room, w, corridor_2)).
+can_unlock(door(computer_room, w, corridor_2)).
+
+
+/* Computer */
+in(computer, computer_room).
+computer_state(off).
+
+handle_input :-
+    computer_state(on),
+    write('/home/sysy$ '),
+    read_line_to_string(user_input, Input),
+    process_input(Input),
+    handle_input.
+
+handle_input.
+
+process_input("ls") :- nl.
+
+process_input("ls -la") :-
+    write('-r-------- 1 root root 123 Nov 11 12:34 .pass'), nl.
+
+process_input("ls -a") :- write('.pass'), nl.
+
+process_input("cat .pass") :- write('Permission denied').
+
+process_input(Input) :-
+    sub_string(Input, 0, 3, _, "cd "),
+    !,
+    sub_string(Input, 3, _, 0, Rest),
+    write('Cannot cd to '), write(Rest), nl.
+
+process_input("clear") :- tty_clear.
+
+process_input("exit") :-
+    write('shutting down'), nl,
+    assertz(computer_state(off)),
+    retract(computer_state(on)).
+
+process_input("").
+
+process_input(X) :- write("Unknown command: "), write(X), nl.
+
+power_on(computer) :-
+    % i_am_at(computer_room),
+    % !,
+    assertz(computer_state(on)),
+    retract(computer_state(off)),
+    write('Computer powered on'), nl,
+    handle_input.
+    
+
+reset :-
+    assertz(computer_state(off)),
+    (computer_state(on) -> retract(computer_state(on));true),
+    power_on(computer).
+
+    
