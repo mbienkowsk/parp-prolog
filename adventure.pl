@@ -1,7 +1,7 @@
 /* Sysy biega 2, by Mikolaj Garbowski and Maksym Bienkowski. */
 
 :- dynamic i_am_at/1, at/2, holding/1, is_open/1, is_closed/1, is_locked/1, is_unlocked/1, in/2.
-:- discontiguous reset_world/0, import_data/0, setup/0.
+:- discontiguous reset_world/0.
 
 reset_world :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(is_closed(_)), retractall(is_closed(_)),
    retractall(is_open(_)), retractall(is_locked(_)), retractall(is_unlocked(_)).
@@ -15,6 +15,7 @@ import_data:-
         consult('door_like_interface.pl'),
         consult('rooms/locker_room/logic.pl'),
         consult('rooms/locker_room/descriptions.pl').
+        % consult('door_aliases.pl'). somehow this messes everything up
 
 
 /* Initial setup */
@@ -50,11 +51,6 @@ instructions :-
 
 
 /* This rule prints out instructions and tells where you are. */
-
-reset_world.
-import_data.
-setup.
-
 start :-
         reset_world,
         import_data,
