@@ -7,6 +7,10 @@ is_locked(door(computer_room, w, corridor_2)).
 can_unlock(door(computer_room, w, corridor_2)).
 
 
+/* Desk */
+in(desk, computer_room).
+
+
 /* Computer */
 in(computer, computer_room).
 computer_state(off).
@@ -27,15 +31,19 @@ process_input("ls -la") :-
 
 process_input("ls -a") :- write('.pass'), nl.
 
-process_input("cat .pass") :- write('Permission denied').
-
-process_input("sudo cat .pass") :- write('sysy de la knyszy').
+process_input("cat .pass") :- write('Permission denied'), nl.
 
 process_input(Input) :-
     sub_string(Input, 0, 3, _, "cd "),
     !,
     sub_string(Input, 3, _, 0, Rest),
     write('Cannot cd to '), write(Rest), nl.
+
+process_input(Input) :-
+    sub_string(Input, 0, 5, _, "sudo "),
+    !,
+    sub_string(Input, 5, _, 0, Rest),
+    password_loop(Rest).
 
 process_input("clear") :- tty_clear.
 
@@ -45,9 +53,19 @@ process_input("exit") :-
     retract(computer_state(on)).
 
 process_input("shutdown") :- process_input("exit").
-process_input("").
 
+process_input("").
 process_input(X) :- write("Unknown command: "), write(X), nl.
+
+password_loop(Input) :-
+    write('[sudo] password for sysy: '),
+    read_line_to_string(user_input, Pass),
+    (Pass == "98145" -> !, (Input=="cat .pass" -> display_pass;  process_input(Input), handle_input);
+     Pass == "shutdown" -> !, process_input("shutdown");
+     Pass == "exit" -> !, process_input("exit");
+     write('Invalid password.'), nl, password_loop(Input)).
+
+display_pass :- write('knyszy de la sysy'), nl.
 
 power_on(computer) :-
     % i_am_at(computer_room),
@@ -64,3 +82,4 @@ reset :-
     power_on(computer).
 
     
+ 
