@@ -81,4 +81,9 @@ describe(desk) :- write('Wooden desk. There is a sticky note underneath! It says
 
 describe(computer_room) :- write('You are in the computer room. There is a desk with a computer on top of it.').
 
-
+/*--------------------------------------------
+END OF COMPUTER_ROOM
+START OF CORRIDOR_2
+---------------------------------------------*/
+describe(corridor_2) :-
+   write('You are in the second segment of the corridor. west - experiment room, east - computer room.').

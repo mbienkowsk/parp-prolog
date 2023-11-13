@@ -69,6 +69,18 @@ can_unlock(door(computer_room, w, corridor_2)).
 /* Desk */
 in(desk, computer_room).
 
+/*--------------------------------------------
+END OF COMPUTER_ROOM
+START OF CORRIDOR_2
+---------------------------------------------*/
+
+% East door towards computer room
+door(corridor_2, e, computer_room).
+is_locked(door(corridor_2, e, computer_room)).
+% can only unlock from inside the computer room
+can_unlock(door(corridor_2, e, computer_room)) :- i_am_at(computer_room).
+
+
 /*-------------------------------------------
 END OF X
 START OF ALIASES_FOR_DOOR_STATE
