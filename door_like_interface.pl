@@ -36,11 +36,16 @@ unlock(Item) :-
 
 unlock(Item) :- 
     \+ can_unlock(Item),
-    write('You can\'t lock this item. Perhaps you need a key?'),
+    write('You can\'t unlock this item. Perhaps you need a key?'),
     !.
 
 unlock(Item) :- 
     is_locked(Item), 
+    (Item=door(_, _, _) -> (
+        opposite_door(Item, X),
+        retract(is_locked(X)),
+        assert(is_unlocked(X)))
+        ; true),
     retract(is_locked(Item)),
     assert(is_unlocked(Item)),
     write('Ok, the '), write(Item), write(' is unlocked.'),
@@ -87,6 +92,11 @@ lock(Item) :-
 
 lock(Item) :-     
     is_unlocked(Item), 
+    (Item=door(_, _, _) -> (
+        opposite_door(Item, X),
+        retract(is_unlocked(X)),
+        assert(is_locked(X)))
+        ; true),
     retract(is_unlocked(Item)),
     assert(is_locked(Item)),
     write('Ok, the '), write(Item), write(' is locked.'),
@@ -95,14 +105,17 @@ lock(Item) :-
 lock(Item) :- 
     is_locked(Item),
     write('It is already locked.'),
-    assert(is_locked(Item)),
-    write('Ok, the '), write(Item), write(' is locked.'),
     !.
 
 lock(Item) :-
     is_closed(Item),
     retract(is_closed(Item)),
     assert(is_locked(Item)),
+    (Item=door(_, _, _) -> (
+        opposite_door(Item, X),
+        retract(is_closed(X)),
+        assert(is_locked(X)))
+        ; true),
     write('Ok, the '), write(Item), write(' is locked.'),
     !.
 
@@ -132,6 +145,11 @@ open(Item) :-
 
 open(Item) :-   
     is_unlocked(Item), 
+    (Item=door(_, _, _) -> (
+        opposite_door(Item, X),
+        retract(is_unlocked(X)),
+        assert(is_open(X)))
+        ; true),
     retract(is_unlocked(Item)),
     assert(is_open(Item)),
     write('Ok, the '), write(Item), write(' is open.'),
@@ -144,6 +162,11 @@ open(Item) :-
 
 open(Item) :-   
     is_closed(Item), 
+    (Item=door(_, _, _) -> (
+        opposite_door(Item, X),
+        retract(is_closed(X)),
+        assert(is_open(X)))
+        ; true),
     retract(is_closed(Item)),
     assert(is_open(Item)),
     write('Ok, the '), write(Item), write(' is open.'),
@@ -183,6 +206,11 @@ close_door(Item) :-
     is_open(Item),
     retract(is_open(Item)),
     assert(is_closed(Item)),
+    (Item=door(_, _, _) -> (
+        opposite_door(Item, X),
+        retract(is_open(X)),
+        assert(is_closed(X)))
+        ; true),
     write('Ok, the '), write(Item), write(' is closed.'),
     !.
 
@@ -190,3 +218,10 @@ close_door(Item) :-
     is_closed(Item),
     write('It is already closed.'),
     !.
+
+
+opposite_door(X, Y) :-
+    (X=door(A, n, B), Y=door(B, s, A));
+    (X=door(A, s, B), Y=door(B, n, A));
+    (X=door(A, e, B), Y=door(B, w, A));
+    (X=door(A, w, B), Y=door(B, e, A)).
