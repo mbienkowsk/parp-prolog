@@ -55,3 +55,4 @@ path(Here, Direction, There) :- is_open(door(Here, Direction, There)).
 
 % define paths for corridors, etc where door logic doesn't apply
 path(corridor_1, s, corridor_2).
+path(corridor_2, n, corridor_1).
