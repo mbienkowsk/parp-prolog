@@ -1,19 +1,3 @@
-:- discontiguous in/2, door/3, is_locked/1.
-:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1, computer_state/1.
-
-/* West door towards corridor_2 */
-door(computer_room, w, corridor_2).
-is_locked(door(computer_room, w, corridor_2)).
-can_unlock(door(computer_room, w, corridor_2)).
-
-
-/* Desk */
-in(desk, computer_room).
-
-
-/* Computer */
-in(computer, computer_room).
-computer_state(off).
 
 /* Input loop when pc is turned on */
 handle_input :-
@@ -93,6 +77,3 @@ reset :-
     assertz(computer_state(off)),
     (computer_state(on) -> retract(computer_state(on));true),
     power_on(computer).
-
-    
- 

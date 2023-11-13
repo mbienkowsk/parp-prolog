@@ -1,5 +1,5 @@
 
-:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_unlocked/1, is_open/1, is_closed/1.
+:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_unlocked/1, is_open/1, is_closed/1, can_unlock/1.
 :- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1.
 
 
@@ -55,6 +55,19 @@ is_open(door(corridor_1, w, locker_room)).
 door(corridor_1, n, generator_room).
 is_open(door(corridor_1, n, generator_room)).
 
+/*-------------------------------------------
+END OF CORRIDOR_1
+START OF COMPUTER_ROOM
+---------------------------------------------*/
+
+/* West door towards corridor_2 */
+door(computer_room, w, corridor_2).
+is_locked(door(computer_room, w, corridor_2)).
+can_unlock(door(computer_room, w, corridor_2)).
+
+
+/* Desk */
+in(desk, computer_room).
 
 /*-------------------------------------------
 END OF X

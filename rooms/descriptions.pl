@@ -1,3 +1,7 @@
+/*-------------------------------------------
+START OF LOCKER_ROOM
+---------------------------------------------*/
+
 /* Description for the locker room */
 describe(locker_room) :-
    write('You are in the locker room. '),
@@ -64,4 +68,14 @@ describe(north_door) :-
     i_am_at(corridor_1),
     !,
     write('The door seems to be unlocked.').
+
+/*-------------------------------------------
+END OF CORRIDOR_1
+START OF COMPUTER_ROOM
+---------------------------------------------*/
+
+describe(computer) :- write('There is a computer on the desk. Use power_on(computer) to interact with it.').
+describe(desk) :- write('Wooden desk. There is a sticky note underneath! It says 98145.').
+describe(computer_room) :- write('You are in the computer room. There is a desk with a computer on top of it.').
+
 
