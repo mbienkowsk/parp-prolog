@@ -1,7 +1,7 @@
 
-:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_unlocked/1, is_open/1, is_closed/1, can_unlock/1.
+:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_unlocked/1, is_open/1, is_closed/1, can_unlock/1, can_lock/1.
 :- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1.
-
+in(door(A, _, _), X) :- A=X.
 
 /*-------------------------------------------
 START OF LOCKER_ROOM
@@ -39,7 +39,7 @@ enter(keypad, 123456) :-
     door(locker_room, n, security_room).
 
 enter(keypad, _) :-
-    write('The light on the lock blinks red. The code provided was incorrect.'),
+    write('The light on the lock blinks red. The provided code was incorrect.'),
     !.
 
 /*-------------------------------------------
@@ -49,7 +49,9 @@ START OF CORRIDOR_1
 
 % locker room door to the west
 door(corridor_1, w, locker_room).
-is_open(door(corridor_1, w, locker_room)).
+is_locked(door(corridor_1, w, locker_room)).
+can_unlock(door(corridor_1, w, locker_room)) :- holding(locker_room_key).
+can_lock(door(corridor_1, w, locker_room)) :- holding(locker_room_key).
 
 % generator room door to the north
 door(corridor_1, n, generator_room).
