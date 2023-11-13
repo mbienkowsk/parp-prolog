@@ -55,18 +55,18 @@ password_loop(Input) :-
     user wasn't asking for it. Shutdown and exit make it possible to exit the loop since we don't
     have access to ctrl+C.
     */
-    (Pass == "98145" -> !, (Input=="cat .pass" -> display_pass;
+    (Pass == "KirgisWalter" -> !, (Input=="cat .pass" -> display_pass;
                               process_input(Input), handle_input);
      Pass == "shutdown" -> !, process_input("shutdown");
      Pass == "exit" -> !, process_input("exit");
      write('Invalid password.'), nl, password_loop(Input)).
 
 % placeholder for now
-display_pass :- write('knyszy de la sysy'), nl.
+display_pass :- write('password: miauuuuu'), nl.
 
 power_on(computer) :-
-    % i_am_at(computer_room),
-    % !,
+    i_am_at(computer_room),
+    !,
     assertz(computer_state(on)),
     retract(computer_state(off)),
     write('Computer powered on'), nl,
