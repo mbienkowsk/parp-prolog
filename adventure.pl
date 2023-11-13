@@ -13,10 +13,8 @@ import_data:-
         consult('exploration.pl'),
         consult('container.pl'),
         consult('door_like_interface.pl'),
-        consult('rooms/locker_room/logic.pl'),
-        consult('rooms/locker_room/descriptions.pl'),
-        consult('rooms/computer_room/descriptions.pl'),
-        consult('rooms/computer_room/logic.pl').
+        consult('rooms/logic.pl'),
+        consult('rooms/descriptions.pl').
         % consult('door_aliases.pl'). somehow this messes everything up
 
 
