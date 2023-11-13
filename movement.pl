@@ -15,10 +15,10 @@ w :- go(w).
 /* This rule tells how to move in a given direction. */
 
 
-% No path in the given direction
+% No path/door in the given direction
 go(Direction) :-
     i_am_at(Here),
-    \+ door(Here, Direction, _),
+    \+(door(Here, Direction, _);path(Here, Direction, _)),
     !,
     write('Cannot go from '), write(Here), write(' in this direction.').
 
@@ -55,3 +55,4 @@ path(Here, Direction, There) :- is_open(door(Here, Direction, There)).
 
 % define paths for corridors, etc where door logic doesn't apply
 path(corridor_1, s, corridor_2).
+path(corridor_2, n, corridor_1).

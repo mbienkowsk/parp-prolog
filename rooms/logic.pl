@@ -65,11 +65,27 @@ START OF COMPUTER_ROOM
 /* West door towards corridor_2 */
 door(computer_room, w, corridor_2).
 is_locked(door(computer_room, w, corridor_2)).
-can_unlock(door(computer_room, w, corridor_2)).
+can_unlock(door(computer_room, w, corridor_2)) :- i_am_at(computer_room).
 
 
 /* Desk */
 in(desk, computer_room).
+
+/*--------------------------------------------
+END OF COMPUTER_ROOM
+START OF CORRIDOR_2
+---------------------------------------------*/
+
+% East door towards computer room
+door(corridor_2, e, computer_room).
+is_locked(door(corridor_2, e, computer_room)).
+% can only unlock from inside the computer room
+can_unlock(door(corridor_2, e, computer_room)) :- i_am_at(computer_room).
+
+% West door towards experiment room (blown open)
+door(corridor_2, w, experiment_room).
+is_open(door(corridor_2, w, experiment_room)).
+
 
 /*-------------------------------------------
 END OF X
