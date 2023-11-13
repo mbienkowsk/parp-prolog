@@ -20,8 +20,18 @@ unlock(Item) :-
     unlock(Door).
 
 unlock(Item) :- 
+    i_am_at(X), \+in(Item, X),
+    write('Don\'t see it here.'),
+    !.    
+
+unlock(Item) :- 
     \+ door_like_interface(Item),
     write('This item cannot be unlocked.'),
+    !.
+
+unlock(Item) :- 
+    i_am_at(X), \+in(Item, X),
+    write('Don\'t see it here.'),
     !.
 
 unlock(Item) :- 
@@ -59,6 +69,11 @@ lock(Item) :-
         (Item = west_door, door(X, w, Y), Door = door(X, w, Y))),
     !,
     lock(Door).
+
+lock(Item) :- 
+    i_am_at(X), \+in(Item, X),
+    write('Don\'t see it here.'),
+    !.
 
 lock(Item) :- 
     \+ door_like_interface(Item),
@@ -100,6 +115,10 @@ open(Item) :-
     !,
     open(Door).
     
+open(Item) :- 
+    i_am_at(X), \+in(Item, X),
+    write('Don\'t see it here.'),
+    !.
 
 open(Item) :- 
     \+ door_like_interface(Item),
@@ -140,6 +159,10 @@ close_door(Item) :-
     !,
     close_door(Door).
 
+close_door(Item) :- 
+    i_am_at(X), \+in(Item, X),
+    write('Don\'t see it here.'),
+    !.
 
 close_door(Item) :- 
     \+ door_like_interface(Item),

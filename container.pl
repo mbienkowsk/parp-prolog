@@ -1,4 +1,4 @@
-:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1.
+:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1, in/2.
 % Container interface - an item can be closed/open/etc.., but also stores items
 
 % Rule describing whether an item can be removed from a container
