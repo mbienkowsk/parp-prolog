@@ -65,7 +65,7 @@ START OF COMPUTER_ROOM
 /* West door towards corridor_2 */
 door(computer_room, w, corridor_2).
 is_locked(door(computer_room, w, corridor_2)).
-can_unlock(door(computer_room, w, corridor_2)).
+can_unlock(door(computer_room, w, corridor_2)) :- i_am_at(computer_room).
 
 
 /* Desk */
