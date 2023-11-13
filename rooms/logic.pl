@@ -1,6 +1,11 @@
 
-:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_open/1.
+:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_unlocked/1, is_open/1, is_closed/1.
 :- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1.
+
+
+/*-------------------------------------------
+START OF LOCKER_ROOM
+---------------------------------------------*/
 
 /* The locker */
 in(locker, locker_room).
@@ -46,11 +51,40 @@ START OF CORRIDOR_1
 door(corridor_1, w, locker_room).
 is_open(door(corridor_1, w, locker_room)).
 
-% corridor 2 path to the south
-% todo
-% path(corridor_1, s, corridor_2).
-
 % generator room door to the north
 door(corridor_1, n, generator_room).
 is_open(door(corridor_1, n, generator_room)).
 
+
+/*-------------------------------------------
+END OF X
+START OF ALIASES_FOR_DOOR_STATE
+---------------------------------------------*/
+
+is_open(Item) :-
+    i_am_at(Place),
+    (Item=north_door, door(Place, n, X), is_open(door(Place, n, X));
+     Item=south_door, door(Place, s, X), is_open(door(Place, s, X));
+     Item=east_door, door(Place, e, X), is_open(door(Place, e, X));
+     Item=west_door, door(Place, w, X), is_open(door(Place, w, X))).
+
+is_closed(Item) :-
+    i_am_at(Place),
+    (Item=north_door, door(Place, n, X), is_closed(door(Place, n, X));
+     Item=south_door, door(Place, s, X), is_closed(door(Place, s, X));
+     Item=east_door, door(Place, e, X), is_closed(door(Place, e, X));
+     Item=west_door, door(Place, w, X), is_closed(door(Place, w, X))).
+
+is_unlocked(Item) :-
+    i_am_at(Place),
+    (Item=north_door, door(Place, n, X), is_unlocked(door(Place, n, X));
+    Item=south_door, door(Place, s, X), is_unlocked(door(Place, s, X));
+    Item=east_door, door(Place, e, X), is_unlocked(door(Place, e, X));
+    Item=west_door, door(Place, w, X), is_unlocked(door(Place, w, X))).
+
+is_locked(Item) :-
+    i_am_at(Place),
+    (Item=north_door, door(Place, n, X), is_locked(door(Place, n, X));
+     Item=south_door, door(Place, s, X), is_locked(door(Place, s, X));
+     Item=east_door, door(Place, e, X), is_locked(door(Place, e, X));
+     Item=west_door, door(Place, w, X), is_locked(door(Place, w, X))).
