@@ -11,11 +11,20 @@ import_data:-
         consult('inventory_management.pl'),
         consult('movement.pl'),
         consult('exploration.pl'),
+        % it is important that door aliases is before dli and container
+        consult('door_aliases.pl'),
         consult('container.pl'),
         consult('door_like_interface.pl'),
-        consult('rooms/logic.pl'),
-        consult('rooms/descriptions.pl'),
-        consult('computer_interface.pl').
+
+        consult('rooms/locker_room/logic.pl'),
+        consult('rooms/locker_room/descriptions.pl'),
+        consult('rooms/corridors/logic.pl'),
+        consult('rooms/corridors/descriptions.pl'),
+        consult('rooms/computer_room/logic.pl'),
+        consult('rooms/computer_room/descriptions.pl'),
+        consult('rooms/computer_room/computer_interface.pl'),
+        consult('rooms/generator_room/logic.pl'),
+        consult('rooms/generator_room/descriptions.pl').
 
 
 /* Initial setup */
