@@ -44,6 +44,7 @@ take(X) :-
 /* These rules describe how to put down an object. */
 
 drop(power_cell) :-
+    i_am_at(Place),
     holding(power_cell(X)),
     !,
     X > 0,
