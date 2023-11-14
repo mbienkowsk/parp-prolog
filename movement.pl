@@ -1,5 +1,6 @@
 
 :- dynamic i_am_at/1, at/2, holding/1, path/3.
+:- multifile path/3.
 
 /* These rules define the direction letters as calls to go/1. */
 
@@ -52,7 +53,3 @@ go(_) :-
 
 % shorthand for checking whether one can go to a place
 path(Here, Direction, There) :- is_open(door(Here, Direction, There)).
-
-% define paths for corridors, etc where door logic doesn't apply
-path(corridor_1, s, corridor_2).
-path(corridor_2, n, corridor_1).
