@@ -38,3 +38,5 @@ at(Thing, Place) :-
 
 at(Thing, Place) :-
     in(Thing, ThingContainer), at(ThingContainer, Place).
+
+in(door(A, _, _), X) :- A=X.
