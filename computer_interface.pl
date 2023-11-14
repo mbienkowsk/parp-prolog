@@ -64,15 +64,6 @@ password_loop(Input) :-
 % placeholder for now
 display_pass :- write('password: miauuuuu'), nl.
 
-power_on(computer) :-
-    i_am_at(computer_room),
-    !,
-    assertz(computer_state(on)),
-    retract(computer_state(off)),
-    write('Computer powered on'), nl,
-    handle_input.
-    
-
 reset :-
     assertz(computer_state(off)),
     (computer_state(on) -> retract(computer_state(on));true),

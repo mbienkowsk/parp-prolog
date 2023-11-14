@@ -1,8 +1,9 @@
 
-:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_unlocked/1, is_open/1, is_closed/1, can_unlock/1, can_lock/1.
-:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1.
-in(door(A, _, _), X) :- A=X.
+:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_unlocked/1, is_open/1.
+:- discontiguous is_closed/1, can_unlock/1, can_lock/1, power_on/1.
+dsf:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1, computer_state/1.
 
+in(door(A, _, _), X) :- A=X.
 /*-------------------------------------------
 START OF LOCKER_ROOM
 ---------------------------------------------*/
@@ -36,7 +37,7 @@ enter(keypad, 123456) :-
     write('The light on the lock blinks green, it buzzes and unlocks. Correct!'),
     !,
     % todo - have to retract current state
-    door(locker_room, n, security_room).
+    is_open(door(locker_room, n, security_room)).
 
 enter(keypad, _) :-
     write('The light on the lock blinks red. The provided code was incorrect.'),
@@ -67,6 +68,16 @@ door(computer_room, w, corridor_2).
 is_locked(door(computer_room, w, corridor_2)).
 can_unlock(door(computer_room, w, corridor_2)) :- i_am_at(computer_room).
 
+% This needs to be here so no conflicts are caused.
+power_on(computer) :-
+    i_am_at(computer_room),
+    !,
+    assertz(computer_state(on)),
+    retract(computer_state(off)),
+    write('Computer powered on'), nl,
+    handle_input.
+    
+computer_state(off).
 
 /* Desk */
 in(desk, computer_room).
@@ -119,3 +130,29 @@ is_locked(Item) :-
      Item=south_door, door(Place, s, X), is_locked(door(Place, s, X));
      Item=east_door, door(Place, e, X), is_locked(door(Place, e, X));
      Item=west_door, door(Place, w, X), is_locked(door(Place, w, X))).
+
+/*----------------------------------------------
+END OF CORRIDOR_2
+START OF GENERATOR_ROOM
+---------------------------------------------*/
+
+
+door(generator_room, s, corridor_1).
+is_open(door(generator_room, s, corridor_1)).
+
+in(generator, generator_room).
+generator_state(empty).
+
+power_on(generator) :-
+    i_am_at(generator_room),
+    holding(power_cell(2)),
+    !,
+    write('With a satisfying click, you slot the power cells into place.'),
+    write('The generator springs to life with a reassuring hum. Lights flicker on, flooding the room with a steady glow.'),
+    write('The air vibrates with renewed energy, and the machinery\'s gentle rumble signals success, powering up the entire lab.').
+
+power_on(generator) :-
+    % any other case where the user tries to turn it on without bringing the cells
+    i_am_at(generator_room),
+    generator_state(off),
+    write('Power remains elusive without the necessary cells. Find and install them to awaken this dormant machine.').
