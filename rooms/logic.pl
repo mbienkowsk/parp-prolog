@@ -1,7 +1,7 @@
 
 :- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_unlocked/1, is_open/1.
 :- discontiguous is_closed/1, can_unlock/1, can_lock/1, power_on/1.
-:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1.
+:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1, computer_state/1.
 
 in(door(A, _, _), X) :- A=X.
 /*-------------------------------------------
@@ -77,6 +77,7 @@ power_on(computer) :-
     write('Computer powered on'), nl,
     handle_input.
     
+computer_state(off).
 
 /* Desk */
 in(desk, computer_room).
