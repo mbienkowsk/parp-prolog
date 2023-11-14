@@ -19,7 +19,7 @@ take(X) :-
 % Case 3 - object is not pickupable (locker, computer, etc.)
 take(X) :-
     \+can_pick_up(X),
-    write('You can\'not pick it up.'),
+    write('You cannot pick it up.'),
     nl,
     !.
 
