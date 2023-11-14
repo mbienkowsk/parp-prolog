@@ -29,6 +29,10 @@ take(X) :-
     \+ can_remove_from_container(X),
     !.
 
+% Case 5 - object is a power cell, so instead of giving it directly, up the
+take(X) :-
+    X=power_cell, !, increment_cell_count.
+
 % Case 5 - All previous conditions don't apply, can be taken
 take(X) :-
     retract(in(X, _)),
@@ -39,11 +43,19 @@ take(X) :-
 
 /* These rules describe how to put down an object. */
 
+drop(power_cell) :-
+    holding(power_cell(X)),
+    !,
+    X > 0,
+    decrement_cell_count,
+    assert(in(power_cell, Place)),
+    write('OK.'), nl.
+
 drop(X) :-
     holding(X),
     i_am_at(Place),
     retract(holding(X)),
-    assert(at(X, Place)),
+    assert(in(X, Place)),
     write('OK.'),
     !, nl.
 
