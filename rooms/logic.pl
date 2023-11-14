@@ -1,7 +1,7 @@
 
 :- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, is_unlocked/1, is_open/1.
 :- discontiguous is_closed/1, can_unlock/1, can_lock/1, power_on/1.
-:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1, computer_state/1.
+dsf:- dynamic is_closed/1, is_locked/1, is_open/1, is_unlocked/1, computer_state/1.
 
 in(door(A, _, _), X) :- A=X.
 /*-------------------------------------------
