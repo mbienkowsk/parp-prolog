@@ -14,7 +14,7 @@ power_on(elevator) :-
 % Fail - generator not on
 power_on(elevator) :-
     \+generator_state(on),
-    \+elevator_status(on)
+    \+elevator_status(on),
     !,
     write('You hear an unpleasant <buzz>, looks like the backup power supply system is not enough to power the elevator'), nl,
     write('It needs more juice!'),
