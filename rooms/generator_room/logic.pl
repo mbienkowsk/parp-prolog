@@ -4,6 +4,8 @@
 door(generator_room, s, corridor_1).
 is_open(door(generator_room, s, corridor_1)).
 
+in(vent, generator_room).
+
 in(generator, generator_room).
 generator_state(empty).
 
@@ -23,3 +25,4 @@ power_on(generator) :-
     i_am_at(generator_room),
     generator_state(off),
     write('Power remains elusive without the necessary cells. Find and install them to awaken this dormant machine.').
+
