@@ -12,14 +12,14 @@ take(X) :-
 take(X) :-
     \+((i_am_at(Place),
     at(X, Place))),
-    write('I don''t see it here.'),
+    write('I don\'t see it here.'),
     nl,
     !.    
 
 % Case 3 - object is not pickupable (locker, computer, etc.)
 take(X) :-
     \+can_pick_up(X),
-    write('You cannot pick it up.'),
+    write('You can\'t pick it up.'),
     nl,
     !.
 

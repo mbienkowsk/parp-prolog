@@ -1,4 +1,5 @@
 :- dynamic is_closed/1, is_open/1, is_locked/1, is_unlocked/1.
+:- multifile unlock/1, lock/1, open/1, close_door/1.
 
 
 /* Items with door-like interface can be locked, unlocked, opened and closed */
@@ -10,14 +11,7 @@ door_interface(door(_, _, _)).
 /* no item should be initalized as one with a door_like interface - door interface is used for it.
     door_like_interface is abstract and shared by doors and containers. */
 
-unlock(Item) :-
-    i_am_at(X),
-    ((Item = north_door, door(X, n, Y), Door = door(X, n, Y));
-     (Item = south_door, door(X, s, Y), Door = door(X, s, Y));
-     (Item = east_door, door(X, e, Y), Door = door(X, e, Y));
-     (Item = west_door, door(X, w, Y), Door = door(X, w, Y))),
-    !,
-    unlock(Door).
+
 
 unlock(Item) :- 
     i_am_at(X), \+in(Item, X),
@@ -66,14 +60,6 @@ unlock(Item) :-
     write('It is already unlocked.'),
     !.
 
-lock(Item) :-
-    i_am_at(X),
-    ((Item = north_door, door(X, n, Y), Door = door(X, n, Y));
-        (Item = south_door, door(X, s, Y), Door = door(X, s, Y));
-        (Item = east_door, door(X, e, Y), Door = door(X, e, Y));
-        (Item = west_door, door(X, w, Y), Door = door(X, w, Y))),
-    !,
-    lock(Door).
 
 lock(Item) :- 
     i_am_at(X), \+in(Item, X),
@@ -119,14 +105,7 @@ lock(Item) :-
     write('Ok, the '), write(Item), write(' is locked.'),
     !.
 
-open(Item) :-
-    i_am_at(X),
-    ((Item = north_door, door(X, n, Y), Door = door(X, n, Y));
-     (Item = south_door, door(X, s, Y), Door = door(X, s, Y));
-     (Item = east_door, door(X, e, Y), Door = door(X, e, Y));
-     (Item = west_door, door(X, w, Y), Door = door(X, w, Y))),
-    !,
-    open(Door).
+
     
 open(Item) :- 
     i_am_at(X), \+in(Item, X),
@@ -171,16 +150,6 @@ open(Item) :-
     assert(is_open(Item)),
     write('Ok, the '), write(Item), write(' is open.'),
     !.
-
-
-close_door(Item) :-
-    i_am_at(X),
-    ((Item = north_door, door(X, n, Y), Door = door(X, n, Y));
-        (Item = south_door, door(X, s, Y), Door = door(X, s, Y));
-        (Item = east_door, door(X, e, Y), Door = door(X, e, Y));
-        (Item = west_door, door(X, w, Y), Door = door(X, w, Y))),
-    !,
-    close_door(Door).
 
 close_door(Item) :- 
     i_am_at(X), \+in(Item, X),

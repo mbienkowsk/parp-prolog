@@ -1,5 +1,6 @@
 
 :- dynamic i_am_at/1, at/2, holding/1, path/3.
+:- multifile path/3.
 
 /* These rules define the direction letters as calls to go/1. */
 
@@ -18,7 +19,7 @@ w :- go(w).
 % No path/door in the given direction
 go(Direction) :-
     i_am_at(Here),
-    \+(door(Here, Direction, _);path(Here, Direction, _)),
+    \+(door(Here, Direction, _);path(Here, Direction, _);vent(Here, Direction,_)),
     !,
     write('Cannot go from '), write(Here), write(' in this direction.').
 
@@ -39,7 +40,7 @@ go(Direction) :-
 % check explicitly if door is open
 go(Direction) :-
     i_am_at(Here),
-    path(Here, Direction, There),
+    (path(Here, Direction, There); vent(Here, Direction, There)),
     !,
     retract(i_am_at(Here)),
     assert(i_am_at(There)),
@@ -52,7 +53,3 @@ go(_) :-
 
 % shorthand for checking whether one can go to a place
 path(Here, Direction, There) :- is_open(door(Here, Direction, There)).
-
-% define paths for corridors, etc where door logic doesn't apply
-path(corridor_1, s, corridor_2).
-path(corridor_2, n, corridor_1).
