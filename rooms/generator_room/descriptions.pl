@@ -1,7 +1,7 @@
 :- multifile describe/1.
 
 describe(generator_room) :-
-    write('You are in the generator room. interactable: generator').
+    write('You are in the generator room. interactable: generator, vent').
  
  describe(generator) :- 
     generator_state(empty),

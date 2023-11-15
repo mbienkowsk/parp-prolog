@@ -8,14 +8,6 @@ reset_world :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)
 
 /* Source databases */
 import_data:-
-        consult('inventory_management.pl'),
-        consult('movement.pl'),
-        consult('exploration.pl'),
-        % it is important that door aliases is before dli and container
-        consult('door_aliases.pl'),
-        consult('container.pl'),
-        consult('door_like_interface.pl'),
-
         consult('rooms/locker_room/logic.pl'),
         consult('rooms/locker_room/descriptions.pl'),
         consult('rooms/corridors/logic.pl'),
@@ -24,7 +16,18 @@ import_data:-
         consult('rooms/computer_room/descriptions.pl'),
         consult('rooms/computer_room/computer_interface.pl'),
         consult('rooms/generator_room/logic.pl'),
-        consult('rooms/generator_room/descriptions.pl').
+        consult('rooms/generator_room/descriptions.pl'),
+        consult('rooms/exit_room/descriptions.pl'),
+        consult('rooms/exit_room/logic.pl'),
+        consult('inventory_management.pl'),
+        consult('movement.pl'),
+        consult('exploration.pl'),
+        % it is important that door aliases is before dli and container
+        consult('door_aliases.pl'),
+        consult('container.pl'),
+        consult('door_like_interface.pl').
+
+
 
 
 /* Initial setup */
@@ -39,6 +42,7 @@ setup :-
 
 finish :-
         nl,
+        write('Thanks for playing!'),
         write('The game is over. Please enter the "halt." command.'),
         nl.
 

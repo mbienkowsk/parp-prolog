@@ -19,7 +19,7 @@ w :- go(w).
 % No path/door in the given direction
 go(Direction) :-
     i_am_at(Here),
-    \+(door(Here, Direction, _);path(Here, Direction, _)),
+    \+(door(Here, Direction, _);path(Here, Direction, _);vent(Here, Direction,_)),
     !,
     write('Cannot go from '), write(Here), write(' in this direction.').
 
@@ -40,7 +40,7 @@ go(Direction) :-
 % check explicitly if door is open
 go(Direction) :-
     i_am_at(Here),
-    path(Here, Direction, There),
+    (path(Here, Direction, There); vent(Here, Direction, There)),
     !,
     retract(i_am_at(Here)),
     assert(i_am_at(There)),
