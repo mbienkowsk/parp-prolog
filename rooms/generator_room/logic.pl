@@ -1,4 +1,4 @@
-:- dynamic is_open/1, holding/1, i_am_at/1.
+:- dynamic is_open/1, holding/1, i_am_at/1, generator_state/1.
 :- multifile door/3, is_open/1, holding/1, i_am_at/1, power_on/1, in/2, can_pick_up/1.
 
 door(generator_room, s, corridor_1).
