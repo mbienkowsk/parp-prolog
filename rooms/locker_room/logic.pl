@@ -1,4 +1,4 @@
-:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1.
+:- discontiguous in/2, can_pick_up/1, door/3, is_locked/1, container_interface/1.
 :- multifile in/2, is_closed/1, is_locked/1, can_pick_up/2, can_lock/1, can_unlock/1, is_open/1, can_pick_up/1.
 
 /* The locker */
@@ -35,3 +35,10 @@ enter(keypad, 123456) :-
 enter(keypad, _) :-
     write('The light on the lock blinks red. The provided code was incorrect.'),
     !.
+
+in(locker_compartment, locker).
+container_interface(locker_compartment).
+in(lab_shoes, locker_compartment).
+is_locked(locker_compartment).
+can_pick_up(lab_shoes).
+can_unlock(locker_compartment) :- holding(small_key).

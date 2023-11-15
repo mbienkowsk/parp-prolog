@@ -25,8 +25,7 @@ is_locked(door(corridor_2, e, computer_room)).
 can_unlock(door(corridor_2, e, computer_room)) :- i_am_at(computer_room).
 
 % West door towards experiment room (blown open)
-door(corridor_2, w, experiment_room).
-is_open(door(corridor_2, w, experiment_room)).
+path(corridor_2, w, experiment_room).
 
 % paths between corridors
 path(corridor_1, s, corridor_2).

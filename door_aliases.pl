@@ -66,3 +66,8 @@ close_door(Item) :-
         (Item = west_door, door(X, w, Y), Door = door(X, w, Y))),
     !,
     close_door(Door).
+
+in(north_door, Place) :- door(Place, n, _).
+in(south_door, Place) :- door(Place, s, _).
+in(east_door, Place) :- door(Place, e, _).
+in(west_door, Place) :- door(Place, w, _).
