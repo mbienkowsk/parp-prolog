@@ -19,6 +19,8 @@ import_data:-
         consult('rooms/generator_room/descriptions.pl'),
         consult('rooms/exit_room/descriptions.pl'),
         consult('rooms/exit_room/logic.pl'),
+        consult('rooms/security_room/descriptions.pl'),
+        consult('rooms/security_room/logic.pl'),
         consult('inventory_management.pl'),
         consult('movement.pl'),
         consult('exploration.pl'),
