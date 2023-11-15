@@ -1,8 +1,10 @@
 :- multifile describe/1.
 
 describe(corridor_1) :-
-    write('You are in a dimly lit corridor. There is a door with the label "Generator room" to your north. '),
-    write('The corridor continues to the south and you can\'t really see where it goes.').
+    write('You find yourself in a dimly lit corridor, the ambient light casting faint shadows.'), nl,
+    write('Directly ahead to the north, a door labeled "Generator Room" stands prominently.'), nl,
+    write('Looking to the south, the corridor stretches away, its destination obscured by the dim lighting,'),
+    nl.
 
 
 describe(north_door) :-
@@ -17,13 +19,13 @@ START OF CORRIDOR_2
 describe(corridor_2) :-
     write('You are in the second segment of the corridor. west - experiment room, east - computer room.').
  
- /*----------------------------------------------
+/*---------------------------------------------
 END OF CORRIDOR_2
 START OF VENT_SHAFT
 ---------------------------------------------*/
 describe(vent) :-
     i_am_at(generator_room),
-    \+accessible(vent_shaft),
+    \+accessible(vent_shaft), % TODO error on inspect(vent).
     write('The vent is pretty spacious. Perhaps you could try to see where it leads?').
 
 describe(vent) :-

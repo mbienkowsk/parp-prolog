@@ -57,9 +57,9 @@ password_loop(Input) :-
     */
     (Pass == "KirgisWalter" -> !, (Input=="cat .pass" -> display_pass;
                               process_input(Input), handle_input);
-     Pass == "shutdown" -> !, process_input("shutdown");
-     Pass == "exit" -> !, process_input("exit");
-     write('Invalid password.'), nl, password_loop(Input)).
+    Pass == "shutdown" -> !, process_input("shutdown");
+    Pass == "exit" -> !, process_input("exit");
+    write('Invalid password.'), nl, password_loop(Input)).
 
 % placeholder for now
 display_pass :- write('password: miauuuuu'), nl.
