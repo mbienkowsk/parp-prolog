@@ -37,7 +37,7 @@ unlock(Item) :-
         ; true),
     retract(is_locked(Item)),
     assert(is_unlocked(Item)),
-    write('Ok, the '), write(Item), write(' is unlocked.'),
+    write('Ok, the '), write(Item), write(' is unlocked.'), % TODO: fix wirte(Item)
     !.
 
 unlock(Item) :- 
