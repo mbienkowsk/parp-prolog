@@ -42,7 +42,13 @@ hint(desk) :- write('Google it.'), nl.
 
 hint(computer) :- write('You can use it as a decorative piece or power_on(computer). to make better use of it.'), nl.
 
-%TODO vent, west_door
+hint(west_door) :-
+    i_am_at(computer_room),
+    write('Try opening them from this side'), nl.
+
+hint(vent) :-
+    i_am_at(computer_room),
+    write('You can enter the vent'), nl.
 
 /* --------------------------------
 corridors
@@ -62,11 +68,10 @@ hint(elevator) :- write('To go inside use enter(elevator).'), nl.
 /* --------------------------------
 generator_room
 ---------------------------------*/
-hint(generator_room) :- write('You can interact with power_cell, generator or go south'), nl.
+hint(generator_room) :- write('You can interact with, generator, vent or go south'), nl.
 
 hint(generator) :- write('Use power_on(generator). to power it on'), nl.
 
-hint(power_cell) :- write('Pick it up, it may come in handy later'), nl. % TODO does it belong here?
 
 /* --------------------------------
 experiment_room
@@ -75,9 +80,11 @@ hint(experiment_room) :-
     write('You need to acquire some protective gear to walk through the toxic sludge.'), nl,
     write('You can interact with tool_chest and broken_door'), nl.
 
-hint(tool_chest) :- write('Check what\'s inside'), nl.
+hint(tool_chest) :- write('To see what\'s inside, first you need some protective gear to cross the toxic puddle'), nl.
 
 hint(broken_door) :- write('Maybe taking a closer look at it will reveal something?'), nl.
+
+hint(power_cell) :- write('Pick it up, it may come in handy later'), nl.
 
 
 /* Wildcard */
