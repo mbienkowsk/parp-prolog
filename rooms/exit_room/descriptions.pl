@@ -9,3 +9,6 @@ describe(elevator) :-
 
 describe(elevator) :-
     write('Elevator inaccessible. Security room first.').
+
+%TODO describe power_cell
+%TODO descriibe vent!

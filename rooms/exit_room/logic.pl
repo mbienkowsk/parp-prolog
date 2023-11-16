@@ -3,6 +3,7 @@
 
 in(vent, exit_room).
 in(elevator, exit_room).
+in(power_cell, exit_room).
 elevator_status(off).
 
 enter(elevator) :-

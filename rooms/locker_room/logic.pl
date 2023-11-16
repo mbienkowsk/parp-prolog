@@ -26,7 +26,7 @@ is_locked(door(locker_room, n, security_room)).
 
 /* Combination lock */
 in(keypad, locker_room).
-enter(keypad, 123456) :-
+enter(keypad, 852611) :-
     write('The light on the lock blinks green, it buzzes and unlocks. Correct!'),
     !,
     % todo - have to retract current state

@@ -10,8 +10,9 @@ describe(desk) :-
     write('The desk in the room is simple yet functional. It holds a powered-off computer'), nl,
     write('at its center. The smooth surface suggests a place for work or study, while'), nl,
     write('the surrounding space remains uncluttered, you bend to see what\'s underneath it'), nl,
-    write('There is a sticky note! It says "pass: rot13(XvetvfJnygre)"'),
-    write('What\'s rot13? The computer nerds from the lab wouldn\'t just leave a password in plain text for everyone to see').
+    write('There is a sticky note! It says "pass: rot13(XvetvfJnygre)"'), nl,
+    write('What\'s rot13? The computer nerds from the lab wouldn\'t just leave a password in plain text for everyone to see'),
+    nl.
 
 describe(computer_room) :-
     write('As you step into the room bathed in soft light, you notice a solitary desk at'), nl,

@@ -23,8 +23,9 @@ describe(experiment_room) :-
     write('On the other side of the room, you see a small metal tool chest. If you were only able to go through the sludge, '),
     write('you could see what\'s inside. The door was blown open by the failure of the experiment, it seems. It is laying next to where you stand').
 
+% TODO change text after player picked up items
 describe(tool_chest) :-
-    have_on(lab_shoes), 
+    have_on(lab_shoes), % TODO tool chest must be open
     !,
     write('Inside the chest there is a crowbar and a power cell! They could come in handy.').
 

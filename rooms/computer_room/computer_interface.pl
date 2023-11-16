@@ -62,7 +62,7 @@ password_loop(Input) :-
     write('Invalid password.'), nl, password_loop(Input)).
 
 % placeholder for now
-display_pass :- write('password: miauuuuu'), nl.
+display_pass :- write('password: 852611'), nl.
 
 reset :-
     assertz(computer_state(off)),

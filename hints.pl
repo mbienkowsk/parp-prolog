@@ -36,9 +36,9 @@ hint(control_panel) :- write('You can power_on(Something).'), nl.
 /* --------------------------------
 computer_room
 ---------------------------------*/
-hint(computer_room) :- write('You can interact with: computer, desk, vent or go west'), nl.
+hint(computer_room) :- write('You can interact with: computer, desk, vent or try the door to the west'), nl.
 
-hint(desk) :- write('Maybe taking a closer look at it will reveal something.'), nl.
+hint(desk) :- write('Google it.'), nl.
 
 hint(computer) :- write('You can use it as a decorative piece or power_on(computer). to make better use of it.'), nl.
 
@@ -71,7 +71,9 @@ hint(power_cell) :- write('Pick it up, it may come in handy later'), nl. % TODO 
 /* --------------------------------
 experiment_room
 ---------------------------------*/
-hint(experiment_room) :- write('You need to acquire some protective gear to walk through the toxic sludge.'), nl.
+hint(experiment_room) :-
+    write('You need to acquire some protective gear to walk through the toxic sludge.'), nl,
+    write('You can interact with tool_chest and broken_door'), nl.
 
 hint(tool_chest) :- write('Check what\'s inside'), nl.
 

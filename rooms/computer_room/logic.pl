@@ -7,6 +7,7 @@ door(computer_room, w, corridor_2).
 is_locked(door(computer_room, w, corridor_2)).
 can_unlock(door(computer_room, w, corridor_2)) :- i_am_at(computer_room).
 
+% Computer
 % This needs to be here so no conflicts are caused.
 power_on(computer) :-
     i_am_at(computer_room),
@@ -15,7 +16,8 @@ power_on(computer) :-
     retract(computer_state(off)),
     write('Computer powered on'), nl,
     handle_input.
-    
+
+in(computer, computer_room).
 computer_state(off).
 
 %  Desk 

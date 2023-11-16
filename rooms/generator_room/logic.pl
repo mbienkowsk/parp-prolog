@@ -5,6 +5,7 @@ door(generator_room, s, corridor_1).
 is_open(door(generator_room, s, corridor_1)).
 
 in(vent, generator_room).
+vent_state(inaccessible).
 
 in(generator, generator_room).
 generator_state(empty).
@@ -12,6 +13,7 @@ generator_state(empty).
 % belongs in here because related
 can_pick_up(power_cell).
 
+%TODO actually power it on
 power_on(generator) :-
     i_am_at(generator_room),
     holding(power_cell(2)),
@@ -23,6 +25,7 @@ power_on(generator) :-
 power_on(generator) :-
     % any other case where the user tries to turn it on without bringing the cells
     i_am_at(generator_room),
-    generator_state(off),
+    generator_state(empty),
     write('Power remains elusive without the necessary cells. Find and install them to awaken this dormant machine.').
 
+%TODO open(vent) -> the vent is already open

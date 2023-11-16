@@ -71,3 +71,5 @@ describe(keypad) :-
     write('A modern keypad, mounted beside the security room door, stands as the gateway to the lab. '),
     write('It features a digital touchscreen with a numeric grid and softly backlit keys. '),
     write('To enter, you must input the correct 6-digit code.').
+
+% TODO describe lab shoes
