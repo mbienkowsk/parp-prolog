@@ -17,7 +17,15 @@ describe(locker) :-
     write('The locker reveals two compartments, in the upper part, a lab coat hangs neatly on a hanger'), nl,
     write('Below there is another compartment which seems to be locked.').
  
-describe(locker) :- is_closed(locker), write('The locker seems to be unlocked.').
+describe(locker) :- is_closed(locker), write('The locker seems to be unlocked.').   
+
+describe(locker_compartment) :-
+   is_locked(locker_compartment),
+   !,
+   write('The bottom compartment is locked. There is a keyhole, but where is the key?').
+
+describe(locker_compartment) :-
+   write('In the smaller compartment is pair of sturdy, lab shoes. These could probably come in handy!').
  
  
 describe(coat) :-

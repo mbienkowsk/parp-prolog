@@ -14,18 +14,13 @@ door_interface(door(_, _, _)).
 
 
 unlock(Item) :- 
-    i_am_at(X), \+in(Item, X),
+    i_am_at(X), \+at(Item, X),
     write('Don\'t see it here.'),
     !.    
 
 unlock(Item) :- 
     \+ door_like_interface(Item),
     write('This item cannot be unlocked.'),
-    !.
-
-unlock(Item) :- 
-    i_am_at(X), \+in(Item, X),
-    write('Don\'t see it here.'),
     !.
 
 unlock(Item) :- 
@@ -62,7 +57,7 @@ unlock(Item) :-
 
 
 lock(Item) :- 
-    i_am_at(X), \+in(Item, X),
+    i_am_at(X), \+at(Item, X),
     write('Don\'t see it here.'),
     !.
 
@@ -108,7 +103,7 @@ lock(Item) :-
 
     
 open(Item) :- 
-    i_am_at(X), \+in(Item, X),
+    i_am_at(X), \+at(Item, X),
     write('Don\'t see it here.'),
     !.
 
@@ -152,7 +147,7 @@ open(Item) :-
     !.
 
 close_door(Item) :- 
-    i_am_at(X), \+in(Item, X),
+    i_am_at(X), \+at(Item, X),
     write('Don\'t see it here.'),
     !.
 

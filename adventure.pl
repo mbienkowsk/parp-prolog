@@ -4,7 +4,7 @@
 :- discontiguous reset_world/0.
 
 reset_world :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(is_closed(_)), retractall(is_closed(_)),
-   retractall(is_open(_)), retractall(is_locked(_)), retractall(is_unlocked(_)).
+   retractall(is_open(_)), retractall(is_locked(_)), retractall(is_unlocked(_)), (retract(small_key_collected); true), retractall(holding(_)).
 
 /* Source databases */
 import_data:-
@@ -21,6 +21,8 @@ import_data:-
         consult('rooms/exit_room/logic.pl'),
         consult('rooms/security_room/descriptions.pl'),
         consult('rooms/security_room/logic.pl'),
+        consult('rooms/experiment_room/descriptions.pl'),
+        consult('rooms/experiment_room/logic.pl'),
         consult('inventory_management.pl'),
         consult('movement.pl'),
         consult('exploration.pl'),
