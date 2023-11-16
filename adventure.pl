@@ -1,10 +1,12 @@
 /* Sysy biega 2, by Mikolaj Garbowski and Maksym Bienkowski. */
 
-:- dynamic i_am_at/1, at/2, holding/1, is_open/1, is_closed/1, is_locked/1, is_unlocked/1, in/2.
+:- multifile(vent_state/1).
+:- dynamic i_am_at/1, at/2, holding/1, is_open/1, is_closed/1, is_locked/1, is_unlocked/1, in/2, vent_state/1.
 :- discontiguous reset_world/0.
 
 reset_world :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)), retractall(is_closed(_)), retractall(is_closed(_)),
-   retractall(is_open(_)), retractall(is_locked(_)), retractall(is_unlocked(_)), (retract(small_key_collected); true), retractall(holding(_)).
+   retractall(is_open(_)), retractall(is_locked(_)), retractall(is_unlocked(_)), (retract(small_key_collected); true), retractall(holding(_)),
+   retractall(vent_state(_)), assert(vent_state(inaccessible)).
 
 /* Source databases */
 import_data:-

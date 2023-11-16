@@ -23,20 +23,15 @@ describe(corridor_2) :-
 END OF CORRIDOR_2
 START OF VENT_SHAFT
 ---------------------------------------------*/
-describe(vent) :-
-    i_am_at(generator_room),
-    \+accessible(vent_shaft), % TODO error on inspect(vent).
-    write('The vent is pretty spacious. Perhaps you could try to see where it leads?').
 
 describe(vent) :-
     i_am_at(X),
     at(vent, X),
     write('A big, rectangular vent hole in the wall. It looks like a human could fit in there.').
 
-describe(vent_shaft) :-
+describe(vent_shaft) :- % TODO: improve description
     write('You are in the vent shaft. East - exit room, South - computer room, North - generator room').
 
-% TODO - describe vents in every room
 closed_vent_msg :-
     write('The vent is closed shut and the door doesn\'t seem to budge.'), nl,
     write('Maybe using some tool would help?').
