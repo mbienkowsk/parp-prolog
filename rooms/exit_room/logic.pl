@@ -1,5 +1,5 @@
-:- multifile path/3, in/2, enter/1.
-:- dynamic in/2.
+:- multifile path/3, in/2, enter/1, elevator_status/1.
+:- dynamic in/2, elevator_status/1.
 
 in(vent, exit_room).
 in(elevator, exit_room).

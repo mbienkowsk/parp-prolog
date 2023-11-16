@@ -19,11 +19,14 @@ import_data:-
         consult('rooms/generator_room/descriptions.pl'),
         consult('rooms/exit_room/descriptions.pl'),
         consult('rooms/exit_room/logic.pl'),
+        consult('rooms/security_room/descriptions.pl'),
+        consult('rooms/security_room/logic.pl'),
         consult('rooms/experiment_room/descriptions.pl'),
         consult('rooms/experiment_room/logic.pl'),
         consult('inventory_management.pl'),
         consult('movement.pl'),
         consult('exploration.pl'),
+        consult('hints.pl'),
         % it is important that door aliases is before dli and container
         consult('door_aliases.pl'),
         consult('container.pl'),
@@ -62,6 +65,7 @@ instructions :-
         write('open(Object).      -- to open door or container'), nl,
         write('look.              -- to look around you again.'), nl,
         write('instructions.      -- to see this message again.'), nl,
+        write('hint(X)            -- to see clues about X'), nl,
         write('halt.              -- to end the game and quit.'), nl,
         nl.
 

@@ -37,7 +37,7 @@ unlock(Item) :-
         ; true),
     retract(is_locked(Item)),
     assert(is_unlocked(Item)),
-    write('Ok, the '), write(Item), write(' is unlocked.'), % TODO: fix wirte(Item)
+    write('Ok, it is unlocked.'),
     !.
 
 unlock(Item) :- 
@@ -80,7 +80,7 @@ lock(Item) :-
         ; true),
     retract(is_unlocked(Item)),
     assert(is_locked(Item)),
-    write('Ok, the '), write(Item), write(' is locked.'),
+    write('Ok, it is locked.'),
     !.
 
 lock(Item) :- 
@@ -97,7 +97,7 @@ lock(Item) :-
         retract(is_closed(X)),
         assert(is_locked(X)))
         ; true),
-    write('Ok, the '), write(Item), write(' is locked.'),
+    write('Ok, it is locked.'),
     !.
 
 
@@ -126,7 +126,7 @@ open(Item) :-
         ; true),
     retract(is_unlocked(Item)),
     assert(is_open(Item)),
-    write('Ok, the '), write(Item), write(' is open.'),
+    write('Ok, it is open.'),
     !.
 
 open(Item) :-
@@ -143,7 +143,7 @@ open(Item) :-
         ; true),
     retract(is_closed(Item)),
     assert(is_open(Item)),
-    write('Ok, the '), write(Item), write(' is open.'),
+    write('Ok, it is open.'),
     !.
 
 close_door(Item) :- 
@@ -175,7 +175,7 @@ close_door(Item) :-
         retract(is_open(X)),
         assert(is_closed(X)))
         ; true),
-    write('Ok, the '), write(Item), write(' is closed.'),
+    write('Ok, the it is closed.'),
     !.
 
 close_door(Item) :-
