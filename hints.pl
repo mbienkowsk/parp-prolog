@@ -71,10 +71,13 @@ hint(power_cell) :- write('Pick it up, it may come in handy later'), nl. % TODO 
 /* --------------------------------
 experiment_room
 ---------------------------------*/
-% TODO
+hint(experiment_room) :- write('You need to acquire some protective gear to walk through the toxic sludge.'), nl.
+
+hint(tool_chest) :- write('Check what\'s inside'), nl.
+
+hint(broken_door) :- write('Maybe taking a closer look at it will reveal something?'), nl.
+
 
 /* Wildcard */
 hint(_) :-
     write('I have no clues about that'), nl.
-
-% TODO only allow seeing hints for objects in the same room as the player
