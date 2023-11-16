@@ -16,7 +16,7 @@ describe(elevator) :-
 
 describe(power_cell) :-
     at(power_cell, exit_room),
-    write('On the floor, a power cell pulses with energy, illuminating the room'), nl.
+    write('On the floor, a power cell pulses with energy, illuminating the room'), nl,
     write('It may come in handy.'), nl.
 
 describe(vent) :-

@@ -1,4 +1,4 @@
-:- multifile describe/1.
+:- multifile describe/1, in/2, is_open/1.
 :- dynamic small_key_collected/0, have_on/1.
 small_key_collected:- false.
 
@@ -23,14 +23,48 @@ describe(experiment_room) :-
     write('On the other side of the room, you see a small metal tool chest. If you were only able to go through the sludge, '),
     write('you could see what\'s inside. The door was blown open by the failure of the experiment, it seems. It is laying next to where you stand').
 
-% TODO change text after player picked up items
-describe(tool_chest) :-
-    have_on(lab_shoes), % TODO tool chest must be open
-    !,
-    write('Inside the chest there is a crowbar and a power cell! They could come in handy.').
 
-describe('tool_chest') :-
+describe(tool_chest) :-
+    have_on(lab_shoes),
+    is_open(tool_chest),
+    in(crowbar, tool_chest),
+    in(power_cell, tool_chest),
+    !,
+    write('Inside there is a crowbar and a power cell'), nl.
+
+describe(tool_chest) :-
+    have_on(lab_shoes),
+    is_open(tool_chest),
+    in(crowbar, tool_chest),
+    \+in(power_cell, tool_chest),
+    !,
+    write('Inside there is a crowbar'), nl.
+
+describe(tool_chest) :-
+    have_on(lab_shoes),
+    is_open(tool_chest),
+    \+in(crowbar, tool_chest),
+    in(power_cell, tool_chest),
+    !,
+    write('Inside there is a power cell'), nl.
+
+describe(tool_chest) :-
+    have_on(lab_shoes),
+    is_open(tool_chest),
+    \+in(crowbar, tool_chest),
+    \+in(power_cell, tool_chest),
+    !,
+    write('The tool chest is empty'), nl.
+
+describe(tool_chest) :-
+    \+have_on(lab_shoes),
+    !,
     write('The tool chest is made of silver metal. If you could only walk through the sludge to find out its contents...').
+
+describe(tool_chest) :-
+    \+is_open(tool_chest),
+    !,
+    write('Open it first to see what\'s inside'), nl.
 
 describe(broken_door) :- 
     small_key_collected, !,
