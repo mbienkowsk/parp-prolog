@@ -10,13 +10,14 @@ describe(generator_room) :-
  
 describe(generator) :-
     generator_state(off),
-    write('The emergency power generator looms with a single glowing cell within, flanked by two conspicuous empty slots, '),
-    write('rendering the machine silent and incomplete, waiting for its missing components. In order to restore electricity in the lab, the two remaining cells have to be found.').
+    write('The emergency power generator looms with a single glowing cell within, flanked by two conspicuous empty slots,'), nl,
+    write('rendering the machine silent and incomplete, waiting for its missing components.'), nl,
+    write('In order to restore electricity in the lab, the two remaining cells have to be found.'), nl.
 
 describe(generator) :-
     generator_state(on),
-    write('With the power cells in place, the generator hums to life, its core glowing vibrantly.'),
-    write('It\'s ready to go—just a switch away from unleashing its energy.').
+    write('With the power cells in place, the generator hums to life, its core glowing vibrantly.'), nl,
+    write('It\'s ready to go—just a switch away from unleashing its energy.'), nl.
 
 increment_cell_count :-
     holding(power_cell(X)),

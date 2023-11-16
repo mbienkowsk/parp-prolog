@@ -43,16 +43,15 @@ describe(coat) :-
     write('The lab coat stirs a sense of familiarity.'), nl,
     write('The nametag reads: "Dr. J. Sysy.", it triggers a cascade of hazy memories. As you run your'), nl,
     write('fingers over the fabric, flashes of experiments and research echo in your mind.'), nl,
-    write('Memories start coming back to you, it is your coat!'),
-    nl.
+    write('Memories start coming back to you, it is your coat!'), nl.
  
-describe(locker_room_key) :- write('Small, silver key. What does it open?').
+describe(locker_room_key) :- write('Small, silver key. What does it open?'), nl.
  
 describe(east_door) :-
     i_am_at(locker_room),
     holding(locker_room_key),
     !,
-    write('The door is locked. Perhaps the key you found will work? ').
+    write('The door is locked. Perhaps the key you found will work?'), nl.
  
 describe(east_door) :-
     i_am_at(locker_room),
@@ -65,11 +64,11 @@ describe(north_door) :-
     i_am_at(locker_room),
     is_locked(north_door),
     write('The door is made of solid, red metal. Label says "Security room".'), nl,
-    write('The door is closed. there is a keypad next to it. It requires a 6 digit code to be entered. ').
+    write('The door is closed. there is a keypad next to it. It requires a 6 digit code to be entered.'), nl.
 
 describe(keypad) :-
-    write('A modern keypad, mounted beside the security room door, stands as the gateway to the lab. '),
-    write('It features a digital touchscreen with a numeric grid and softly backlit keys. '),
-    write('To enter, you must input the correct 6-digit code.').
+    write('A modern keypad, mounted beside the security room door, stands as the gateway to the lab. '), nl,
+    write('It features a digital touchscreen with a numeric grid and softly backlit keys. '), nl,
+    write('To enter, you must input the correct 6-digit code.'), nl.
 
 % TODO describe lab shoes

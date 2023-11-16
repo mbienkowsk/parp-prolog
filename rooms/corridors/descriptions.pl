@@ -38,5 +38,5 @@ describe(vent_shaft) :-
 
 % TODO - describe vents in every room
 closed_vent_msg :-
-    write('The vent is closed shut and the door doesn\'t seem to budge. '),
+    write('The vent is closed shut and the door doesn\'t seem to budge.'), nl,
     write('Maybe using some tool would help?').
