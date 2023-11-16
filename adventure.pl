@@ -24,6 +24,7 @@ import_data:-
         consult('inventory_management.pl'),
         consult('movement.pl'),
         consult('exploration.pl'),
+        consult('hints.pl'),
         % it is important that door aliases is before dli and container
         consult('door_aliases.pl'),
         consult('container.pl'),
@@ -62,6 +63,7 @@ instructions :-
         write('open(Object).      -- to open door or container'), nl,
         write('look.              -- to look around you again.'), nl,
         write('instructions.      -- to see this message again.'), nl,
+        write('hint(X)            -- to see clues about X'), nl,
         write('halt.              -- to end the game and quit.'), nl,
         nl.
 
