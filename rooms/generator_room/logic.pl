@@ -12,7 +12,19 @@ generator_state(off).
 
 % belongs in here because related
 can_pick_up(power_cell).
-power_cell(0). %TODO take(power_cell) does not work!
+
+increment_cell_count :-
+    holding(power_cell(X))->
+    (retract(holding(power_cell(X))),
+    X1 is X + 1,
+    assert(holding(power_cell(X1))))
+    ;assertz(holding(power_cell(1))).
+
+decrement_cell_count :-
+    holding(power_cell(X)),
+    retract(holding(power_cell(X))),
+    X1 is X - 1,
+    assert(holding(power_cell(X1))).
 
 
 power_on(generator) :-

@@ -7,7 +7,8 @@ describe(experiment_room) :-
     i_am_at(experiment_room),
     have_on(lab_shoes), 
     !,
-    write('You are in the experiment room. With the shoes that you are wearing, you should be able to walk through that sludge.'),
+    write('You are back in the experiment room. With the shoes that you are wearing, you should be able to walk through that sludge. 
+            On the other side of the room, you see the small metal tool chest.'),
     nl.
 
 describe(experiment_room) :-

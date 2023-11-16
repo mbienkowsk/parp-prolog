@@ -19,14 +19,3 @@ describe(generator) :-
     write('With the power cells in place, the generator hums to life, its core glowing vibrantly.'), nl,
     write('It\'s ready to go—just a switch away from unleashing its energy.'), nl.
 
-increment_cell_count :-
-    holding(power_cell(X)),
-    retract(holding(power_cell(X))),
-    X1 is X + 1,
-    assert(holding(power_cell(X1))).
-
-decrement_cell_count :-
-    holding(power_cell(X)),
-    retract(holding(power_cell(X))),
-    X1 is X - 1,
-    assert(holding(power_cell(X1))).
