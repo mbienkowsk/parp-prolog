@@ -8,30 +8,29 @@ reset_world :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)
 
 /* Source databases */
 import_data:-
-        consult('rooms/locker_room/logic.pl'),
-        consult('rooms/locker_room/descriptions.pl'),
-        consult('rooms/corridors/logic.pl'),
-        consult('rooms/corridors/descriptions.pl'),
-        consult('rooms/computer_room/logic.pl'),
-        consult('rooms/computer_room/descriptions.pl'),
-        consult('rooms/computer_room/computer_interface.pl'),
-        consult('rooms/generator_room/logic.pl'),
-        consult('rooms/generator_room/descriptions.pl'),
-        consult('rooms/exit_room/descriptions.pl'),
-        consult('rooms/exit_room/logic.pl'),
-        consult('rooms/security_room/descriptions.pl'),
-        consult('rooms/security_room/logic.pl'),
-        consult('rooms/experiment_room/descriptions.pl'),
-        consult('rooms/experiment_room/logic.pl'),
-        consult('inventory_management.pl'),
-        consult('movement.pl'),
-        consult('exploration.pl'),
-        consult('hints.pl'),
-        % it is important that door aliases is before dli and container
-        consult('door_aliases.pl'),
-        consult('container.pl'),
-        consult('door_like_interface.pl').
-
+    consult('rooms/locker_room/logic.pl'),
+    consult('rooms/locker_room/descriptions.pl'),
+    consult('rooms/corridors/logic.pl'),
+    consult('rooms/corridors/descriptions.pl'),
+    consult('rooms/computer_room/logic.pl'),
+    consult('rooms/computer_room/descriptions.pl'),
+    consult('rooms/computer_room/computer_interface.pl'),
+    consult('rooms/generator_room/logic.pl'),
+    consult('rooms/generator_room/descriptions.pl'),
+    consult('rooms/exit_room/descriptions.pl'),
+    consult('rooms/exit_room/logic.pl'),
+    consult('rooms/security_room/descriptions.pl'),
+    consult('rooms/security_room/logic.pl'),
+    consult('rooms/experiment_room/descriptions.pl'),
+    consult('rooms/experiment_room/logic.pl'),
+    consult('inventory_management.pl'),
+    consult('movement.pl'),
+    consult('exploration.pl'),
+    consult('hints.pl'),
+    % it is important that door aliases is before dli and container
+    consult('door_aliases.pl'),
+    consult('container.pl'),
+    consult('door_like_interface.pl').
 
 
 
@@ -46,28 +45,33 @@ setup :-
    routine requests the user to perform the final "halt." */
 
 finish :-
-        nl,
-        write('Thanks for playing!'),
-        write('The game is over. Please enter the "halt." command.'),
-        nl.
+    nl,
+    write('Thanks for playing!'),
+    write('The game is over. Please enter the "halt." command.'),
+    nl.
 
 
 /* This rule just writes out game instructions. */
 
 instructions :-
-        nl,
-        write('Enter commands using standard Prolog syntax.'), nl,
-        write('Available commands are:'), nl,
-        write('start.             -- to start the game.'), nl,
-        write('n.  s.  e.  w.     -- to go in that direction.'), nl,
-        write('take(Object).      -- to pick up an object.'), nl,
-        write('drop(Object).      -- to put down an object.'), nl,
-        write('open(Object).      -- to open door or container'), nl,
-        write('look.              -- to look around you again.'), nl,
-        write('instructions.      -- to see this message again.'), nl,
-        write('hint(X)            -- to see clues about X'), nl,
-        write('halt.              -- to end the game and quit.'), nl,
-        nl.
+    nl,
+    write('Enter commands using standard Prolog syntax.'), nl,
+    write('Available commands are:'), nl,
+    write('start.             -- to start the game.'), nl,
+    write('n.  s.  e.  w.     -- to go in that direction.'), nl,
+    write('enter(Object).     -- to get inside Object.'), nl,
+    write('examine(Object).   -- to inspect the details of Object.'), nl
+    write('take(Object).      -- to pick up an object.'), nl,
+    write('drop(Object).      -- to put down an object.'), nl,
+    write('open(Object).      -- to open door or container.'), nl,
+    write('unlock(Object).    -- to unlock door or container.'), nl,
+    write('look.              -- to look around you again.'), nl,
+    write('instructions.      -- to see this message again.'), nl,
+    write('hint(X).           -- to see clues about X'.), nl,
+    write('hint(here).        -- to see clues about current location.'), nl,
+    write('halt.              -- to end the game and quit.'), nl,
+    write('...and some more hidden commands that are left for you to discover.'), nl,
+    nl.
 
 
 introduction :-
@@ -92,9 +96,8 @@ introduction :-
 
 /* This rule prints out instructions and tells where you are. */
 start :-
-        reset_world,
-        import_data,
-        setup,
-        instructions,
-        introduction.
-
+    reset_world,
+    import_data,
+    setup,
+    instructions,
+    introduction.
