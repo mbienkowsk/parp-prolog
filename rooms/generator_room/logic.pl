@@ -12,6 +12,7 @@ generator_state(off).
 
 % belongs in here because related
 can_pick_up(power_cell).
+power_cell(0). %TODO take(power_cell) does not work!
 
 
 power_on(generator) :-

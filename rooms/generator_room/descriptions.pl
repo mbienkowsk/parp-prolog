@@ -5,7 +5,6 @@ describe(generator_room) :-
  
 describe(generator) :-
     generator_state(off),
-    (\+holding(power_cell(_))->assertz(holding(power_cell(0)));true), %TODO this must be set to 0 at start of the game
     write('The emergency power generator looms with a single glowing cell within, flanked by two conspicuous empty slots, '),
     write('rendering the machine silent and incomplete, waiting for its missing components. In order to restore electricity in the lab, the two remaining cells have to be found.').
 
