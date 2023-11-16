@@ -24,8 +24,8 @@ power_on(elevator) :-
 
 % Fail - generator not on
 power_on(elevator) :-
-    \+generator_state(on),
-    \+elevator_status(on),
+    generator_state(off),
+    elevator_status(off),
     !,
     write('You hear an unpleasant <buzz>, looks like the backup power supply system is not enough to power the elevator'), nl,
     write('It needs more juice!'),
@@ -51,7 +51,7 @@ power_on(elevator) :-
 % Success
 power_on(elevator) :-
     generator_state(on),
-    \+elevator_status(on),
+    elevator_status(off),
     !,
     retract(elevator_status(off)),
     assertz(elevator_status(on)),
