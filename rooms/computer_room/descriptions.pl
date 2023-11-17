@@ -19,4 +19,5 @@ describe(computer_room) :-
     write('its center. On the desk rests a computer, its screen silent and'), nl,
     write('dark. The absence of the usual hum of electronic activity adds an eerie calm'), nl,
     write('to the room, leaving the space seemingly dormant.'), nl,
+    write('To the west there is a door locked from this side'), nl,
     nl.

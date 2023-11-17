@@ -18,4 +18,4 @@ enter(elevator) :-
     finish.
 
 enter(elevator) :- 
-    write('You enter the elevator, but it is not responsive to you pressing the buttons. Maybe there is some way to activate it?').
+    write('You enter the elevator, but it is not responsive to you pressing the buttons, the security override is in effect.').
