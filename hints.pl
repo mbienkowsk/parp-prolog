@@ -9,7 +9,12 @@ locker_room
 
 hint(locker_room) :- write('You can interact with the locker, go north or go east, use examine(north_door) to get more information'), nl.
 
-hint(locker) :- write('Use open(locker). to open it and see what\'s inside'), nl.
+hint(locker) :-
+    \+is_open(locker), !,
+    write('Use open(locker). to open it and see what\'s inside'), nl.
+
+hint(locker) :-
+    write('You can interact with coat and locker_compartment'), nl.
 
 hint(coat) :- write('Take a good look at it, maybe you will find something useful'), nl.
 
