@@ -73,6 +73,7 @@ instructions :-
     write('hint(X).           -- to see clues about X.'), nl,
     write('hint(here).        -- to see clues about current location.'), nl,
     write('halt.              -- to end the game and quit.'), nl,
+    write('items_here.        -- to list out items you can pick up at your current location '), nl,
     write('...and more hidden commands that are left for you to discover.'), nl,
     nl.
 

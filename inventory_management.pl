@@ -31,7 +31,7 @@ take(X) :-
 % Case 5 - object is a power cell, so instead of giving it directly, up the
 take(X) :-
     i_am_at(Place),
-    X=power_cell, !, increment_cell_count, retract(in(power_cell, Place)). %TODO remove power_cell from the room
+    X=power_cell, !, increment_cell_count, retract(in(power_cell, Place)).
 
 % Case 5 - All previous conditions don't apply, can be taken
 take(X) :-
