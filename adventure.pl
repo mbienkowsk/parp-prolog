@@ -88,7 +88,7 @@ introduction :-
     write('glow emanating from a small screen hanged on the wall near the entrance.'), nl,
     write('The screen flickers to life, displaying a message in stark white letters:'), nl,
     nl,
-    write('"Subject 42, the experiment has failed. Containment breach detected. Evacuation'), nl,
+    write('"Dr S., the experiment has failed. Containment breach detected. Evacuation'), nl,
     write('protocol initiated. Escape the facility before critical systems fail. Beware of'), nl,
     write('anomalies. Your survival is paramount. Time is of the essence."'), nl,
     nl,
