@@ -1,7 +1,12 @@
 describe(exit_room) :-
+    in(power_cell, exit_room), !,
     write('As you\'re crawling out of the ventilation shaft, you notice an elevator.'), nl,
     write('Finally, a way out of this maze!'), nl,
-    write('Lying in the corner is a power cell lighting up the mysterious room'), nl. %TODO only if it is there
+    write('Lying in the corner is a power cell lighting up the mysterious room'), nl.
+
+describe(exit_room) :-
+    write('As you\'re crawling out of the ventilation shaft, you notice an elevator.'), nl,
+    write('Finally, a way out of this maze!'), nl.
 
 describe(elevator) :-
     elevator_status(on), !, 
