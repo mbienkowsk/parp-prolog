@@ -48,8 +48,8 @@ setup :-
 
 finish :-
     nl,
-    write('Thanks for playing!'),
-    write('The game is over. Please enter the "halt." command.'),
+    write('Thanks for playing!'), nl,
+    write('The game is over. Please enter the "halt." command.'), nl,
     nl.
 
 
