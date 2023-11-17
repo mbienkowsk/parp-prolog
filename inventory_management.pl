@@ -23,7 +23,6 @@ take(X) :-
     nl,
     !.
 
-
 % Case 4 - object cannot be taken out of a container
 take(X) :-
     \+ can_remove_from_container(X),
@@ -31,7 +30,8 @@ take(X) :-
 
 % Case 5 - object is a power cell, so instead of giving it directly, up the
 take(X) :-
-    X=power_cell, !, increment_cell_count. %TODO remove power_cell from the room
+    i_am_at(Place),
+    X=power_cell, !, increment_cell_count, retract(in(power_cell, Place)). %TODO remove power_cell from the room
 
 % Case 5 - All previous conditions don't apply, can be taken
 take(X) :-
