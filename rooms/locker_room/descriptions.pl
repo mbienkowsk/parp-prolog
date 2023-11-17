@@ -14,8 +14,16 @@ describe(locker_room) :-
 /* Description for the items in the locker room. */ %TODO change description based on what is inside
 describe(locker) :-
     is_open(locker),
+    in(coat, locker),
+    write('A locker for storing personal items'), nl,
     write('The locker reveals two compartments, in the upper part, a lab coat hangs neatly on a hanger'), nl,
-    write('Below there is another compartment which seems to be locked.').
+    write('Below there is another locker_compartment.'), nl.
+
+describe(locker) :-
+    is_open(locker),
+    \+in(coat, locker),
+    write('A locker for storing personal items'), nl,
+    write('Below the empty hanger there is another locker_compartment.'), nl.
  
 describe(locker) :- is_closed(locker), write('The locker seems to be unlocked.').   
 
