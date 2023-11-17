@@ -69,10 +69,11 @@ instructions :-
     write('unlock(Object).    -- to unlock door or container.'), nl,
     write('look.              -- to look around you again.'), nl,
     write('instructions.      -- to see this message again.'), nl,
+    write('inventory.         -- to see the items you are holding'), nl,
     write('hint(X).           -- to see clues about X.'), nl,
     write('hint(here).        -- to see clues about current location.'), nl,
     write('halt.              -- to end the game and quit.'), nl,
-    write('...and some more hidden commands that are left for you to discover.'), nl,
+    write('...and more hidden commands that are left for you to discover.'), nl,
     nl.
 
 
@@ -84,7 +85,7 @@ introduction :-
     nl,
     write('A soft hum of emergency alarms pulsates through the room, and the distant echoes'), nl,
     write('of chaotic commotion resonate in the air. Struggling to your feet, you notice a faint'), nl,
-    write('glow emanating from a small screen embedded hanged on the wall near the entrance.'), nl,
+    write('glow emanating from a small screen hanged on the wall near the entrance.'), nl,
     write('The screen flickers to life, displaying a message in stark white letters:'), nl,
     nl,
     write('"Subject 42, the experiment has failed. Containment breach detected. Evacuation'), nl,

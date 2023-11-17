@@ -7,11 +7,13 @@ hint(here) :-
 locker_room
 ---------------------------------*/
 
-hint(locker_room) :- write('You can interact with the locker, go north or go east'), nl.
+hint(locker_room) :- write('You can interact with the locker, go north or go east, use examine(north_door) to get more information'), nl.
 
 hint(locker) :- write('Use open(locker). to open it and see what\'s inside'), nl.
 
 hint(coat) :- write('Take a good look at it, maybe you will find something useful'), nl.
+
+hint(lab_shoes) :- write('put_on(lab_shoes). to put them on.'), nl.
 
 hint(east_door) :-
     i_am_at(locker_room),

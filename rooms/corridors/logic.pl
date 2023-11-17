@@ -68,7 +68,7 @@ open(vent) :-
     holding(crowbar),
     vent_state(inaccessible),
     !,
-    write('You slide the crowbar between the vent door and its door frame and push with a lot of foce. The vent swings open!'),
+    write('You slide the crowbar between the vent door and its door frame and push with a lot of force. The vent swings open!'),
     retract(vent_state(inaccessible)),
     assertz(vent_state(accessible)).
 

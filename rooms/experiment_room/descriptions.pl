@@ -15,7 +15,7 @@ describe(experiment_room) :-
     i_am_at(experiment_room),
     holding(lab_shoes),
     !,
-    write('You are in the experiment room. The floor is covered in a sticky, toxic sludge.'), nl,
+    write('You are in the experiment room. The floor is covered with sticky, toxic sludge.'), nl,
     write('On the other side of the room, you see a small metal tool chest. Maybe you should put on the shoes you found in the locker room?'), nl,
     write('The door was blown open by the failure of the experiment, it seems. It is laying next to where you stand'), nl.
     
@@ -70,10 +70,15 @@ describe(tool_chest) :-
 
 describe(broken_door) :- 
     small_key_collected, !,
-    write('broken door description.').
+    write('Heavy, metal door bent with unimaginable force.').
 
 describe(broken_door) :- 
     write('You inspect the door closely and decide to flip it over. What a surprise! Somebody must\'ve put a key into the keyhole.'), nl,
     write('The key is bent, but it is attached to a keychain, on which there is another key. What could it unlock?'), nl,
     assertz(holding(small_key)),
     assertz(small_key_collected).
+
+
+describe(small_key) :-
+    write('A small key, does not match the size of the keyholes in any of the doors you have seen so far.'), nl,
+    write('It must open something smaller like a...'), nl.

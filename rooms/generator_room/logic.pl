@@ -40,9 +40,9 @@ power_on(generator) :-
     !,
     retract(generator_state(off)),
     assertz(generator_state(on)),
-    write('With a satisfying click, you slot the power cells into place.'),
-    write('The generator springs to life with a reassuring hum. Lights flicker on, flooding the room with a steady glow.'),
-    write('The air vibrates with renewed energy, and the machinery\'s gentle rumble signals success, powering up the entire lab.').
+    write('With a satisfying click, you slot the power cells into place.'), nl,
+    write('The generator springs to life with a reassuring hum. Lights flicker on, flooding the room with a steady glow.'), nl,
+    write('The air vibrates with renewed energy, and the machinery\'s gentle rumble signals success, powering up the entire lab.'), nl.
 
 power_on(generator) :-
     % any other case where the user tries to turn it on without bringing the cells

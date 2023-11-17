@@ -11,7 +11,7 @@ describe(locker_room) :-
     write('To the east, you see another door with no labels as to where it leads'),
     nl.
  
-/* Description for the items in the locker room. */
+/* Description for the items in the locker room. */ %TODO change description based on what is inside
 describe(locker) :-
     is_open(locker),
     write('The locker reveals two compartments, in the upper part, a lab coat hangs neatly on a hanger'), nl,
@@ -71,4 +71,6 @@ describe(keypad) :-
     write('It features a digital touchscreen with a numeric grid and softly backlit keys. '), nl,
     write('To enter, you must input the correct 6-digit code.'), nl.
 
-% TODO describe lab shoes
+describe(lab_shoes) :-
+    write('A sturdy pair shoes, essential for work in hazardous environments, around chemicals.'), nl,
+    write('You can put them on.'), nl.

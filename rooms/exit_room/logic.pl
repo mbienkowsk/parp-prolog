@@ -9,7 +9,7 @@ elevator_status(off).
 enter(elevator) :-
     elevator_status(on),
     !,
-    write('You enter the now functioning elevator and finally leave the lab. Good job!'),
+    write('You enter the now functioning elevator and finally leave the lab. Good job!'), %TODO better text
     finish.
 
 enter(elevator) :- 
