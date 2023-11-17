@@ -33,7 +33,7 @@ describe(locker_compartment) :-
    write('The bottom compartment is locked. There is a keyhole, but where is the key?').
 
 describe(locker_compartment) :-
-   write('In the smaller compartment is pair of sturdy, lab shoes. These could probably come in handy!').
+   write('In the smaller compartment is pair of sturdy, lab_shoes. These could probably come in handy!').
  
  
 describe(coat) :-

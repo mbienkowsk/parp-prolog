@@ -38,12 +38,3 @@ at(Thing, Place) :-
 
 at(Thing, Place) :-
     in(Thing, ThingContainer), at(ThingContainer, Place).
-
-
-items_here :-
-    i_am_at(Place),
-    % directly in the room, not in a container 
-    findall(X, (in(X, Place), can_remove_from_container(X), can_pick_up(X)), Items),
-    Items\==[]->
-    (write('Items in the room you can pick up: '), nl,
-    list_items(Items)); write('No items you can pick up at this location.').

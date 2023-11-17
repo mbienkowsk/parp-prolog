@@ -39,6 +39,7 @@ power_on(generator) :-
     holding(power_cell(2)),
     !,
     retract(generator_state(off)),
+    retract(holding(power_cell(2))),
     assertz(generator_state(on)),
     write('With a satisfying click, you slot the power cells into place.'), nl,
     write('The generator springs to life with a reassuring hum. Lights flicker on, flooding the room with a steady glow.'), nl,

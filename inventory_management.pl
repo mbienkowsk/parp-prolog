@@ -30,8 +30,10 @@ take(X) :-
 
 % Case 5 - object is a power cell, so instead of giving it directly, up the
 take(X) :-
+    X=power_cell, !,
     i_am_at(Place),
-    X=power_cell, !, increment_cell_count, retract(in(power_cell, Place)).
+    (at(power_cell, Place), in(power_cell, Y), (in(Y, Place); Place==Y)),
+    increment_cell_count, retract(in(power_cell, Y)).
 
 % Case 5 - All previous conditions don't apply, can be taken
 take(X) :-

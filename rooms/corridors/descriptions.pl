@@ -3,7 +3,8 @@
 describe(corridor_1) :-
     write('You find yourself in a dimly lit corridor, the ambient light casting faint shadows.'), nl,
     write('Directly ahead to the north, a door labeled "Generator Room" stands prominently.'), nl,
-    write('Looking to the south, the corridor stretches away, its destination obscured by the dim lighting,'),
+    write('Looking to the south, the corridor stretches away, its destination obscured by the dim lighting,'), nl,
+    write('The western door leads to the locker room.'),
     nl.
 
 

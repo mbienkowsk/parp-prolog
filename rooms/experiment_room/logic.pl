@@ -12,6 +12,10 @@ can_pick_up(crowbar).
 
 in(broken_door, experiment_room).
 
+open(tool_chest) :-
+    \+ have_on(lab_shoes),
+    write('You need to find a way to get through the sludge first.').
+
 put_on(lab_shoes) :-
     holding(lab_shoes),
     retract(holding(lab_shoes)),

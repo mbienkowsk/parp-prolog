@@ -75,7 +75,7 @@ hint(elevator) :- write('To go inside use enter(elevator).'), nl.
 /* --------------------------------
 generator_room
 ---------------------------------*/
-hint(generator_room) :- write('You can interact with, generator, vent or go south'), nl.
+hint(generator_room) :- write('You can interact with generator, vent or go south'), nl.
 
 hint(generator) :- write('Use power_on(generator). to power it on'), nl.
 

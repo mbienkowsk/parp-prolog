@@ -29,7 +29,6 @@ in(keypad, locker_room).
 enter(keypad, 852611) :-
     write('The light on the lock blinks green, it buzzes and unlocks. Correct!'),
     !,
-    % todo - have to retract current state
     retract(is_locked(door(locker_room, n, security_room))),
     retract(is_locked(door(security_room, s, locker_room ))),
     assertz(path(locker_room, n, security_room)),

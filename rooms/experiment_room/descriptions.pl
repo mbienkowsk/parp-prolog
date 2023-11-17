@@ -17,13 +17,13 @@ describe(experiment_room) :-
     !,
     write('You are in the experiment room. The floor is covered with sticky, toxic sludge.'), nl,
     write('On the other side of the room, you see a small metal tool chest. Maybe you should put on the shoes you found in the locker room?'), nl,
-    write('The broken_door was blown open by the failure of the experiment, it seems. It is laying next to where you stand'), nl.
+    write('The broken_door was blown open by the failure of the experiment, it seems. It is laying next to where you stand.'), nl.
     
 describe(experiment_room) :-
     i_am_at(experiment_room),
     write('You are in the experiment room. The floor is covered in a sticky, toxic sludge.'), nl,
     write('On the other side of the room, you see a small metal tool chest. If you were only able to go through the sludge, '), nl,
-    write('you could see what\'s inside. The door was blown open by the failure of the experiment, it seems. It is laying next to where you stand'), nl.
+    write('you could see what\'s inside. The door was blown open by the failure of the experiment, it seems. The broken_door is laying next to where you stand.'), nl.
 
 
 describe(tool_chest) :-
