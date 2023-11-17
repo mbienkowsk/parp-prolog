@@ -28,13 +28,17 @@ describe(locker) :-
 describe(locker) :- is_closed(locker), write('The locker seems to be unlocked.').   
 
 describe(locker_compartment) :-
+    is_open(locker_compartment), !,
+    write('In the smaller compartment is pair of sturdy, lab_shoes. These could probably come in handy!').
+
+describe(locker_compartment) :-
    is_locked(locker_compartment),
    !,
    write('The bottom compartment is locked. There is a keyhole, but where is the key?').
 
 describe(locker_compartment) :-
-   write('In the smaller compartment is pair of sturdy, lab_shoes. These could probably come in handy!').
- 
+    write('Open it to see what\'s inside.'), nl.
+
  
 describe(coat) :-
     in(locker_room_key, coat),
